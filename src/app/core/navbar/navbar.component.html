@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: #01d099">
+  <a class="navbar-brand" href="#">TotalStats</a>
+  <button class="navbar-toggler" type="button" (click)="toggleNavbar = !toggleNavbar" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarColor01" [ngbCollapse]="toggleNavbar">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/mlb-predictions">MLB</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/nba-predictions">NBA</a>
+      </li>
+    </ul>
+  </div>
+</nav>

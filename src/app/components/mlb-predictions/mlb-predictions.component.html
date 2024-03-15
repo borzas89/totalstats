@@ -1,0 +1,43 @@
+<h3 style="padding: 35px">MLB Predictions - Pre Season</h3>
+<div class="col">
+  <select #days (change)="onSelected()">
+    <option default>24-02-2024</option>
+    <option>25-02-2024</option>
+    <option>26-02-2024</option>
+    <option>12-03-2024</option>
+  </select>
+</div>
+<ul class="list-group" style="min-height: 550px">
+  <a
+    class="list-group-item"
+    *ngFor="let prediction of items ">
+    <div class="col align-center" style="padding: 20px">
+    <span class="float-left">
+    <img [src]="'assets/mlb/'+prediction.awayTeamAlias+'.png'" width="50" height="50">
+     </span>
+      <span class="float-right">
+    <img [src]="'assets/mlb/'+prediction.homeTeamAlias+'.png'" width="50" height="50">
+     </span>
+    </div>
+    <div class="row">
+
+    </div>
+    <div class="col">
+      <div class="col-md-12">
+        <h3>{{ prediction.awayTeamAlias }} vs. {{ prediction.homeTeamAlias }}</h3>
+        <table class="panel-box" style="padding: 20px">
+          <tr>
+            <th>Away score</th>
+            <th>Total</th>
+            <th>Home Score</th>
+          </tr>
+          <tr>
+            <td>{{ prediction.predictedAwayScore }}</td>
+            <td>{{ prediction.predictedTotal }}</td>
+            <td>{{ prediction.predictedHomeScore }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </a>
+</ul>
