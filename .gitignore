@@ -1,3 +1,10 @@
 
 /node_modules
 /dist
+/.angular
+.idea/codeStyles/codeStyleConfig.xml
+.idea/codeStyles/Project.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/totalstats.iml
+.idea/vcs.xml

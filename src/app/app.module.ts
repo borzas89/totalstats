@@ -11,6 +11,8 @@ import { MlbPredictionsComponent } from './components/mlb-predictions/mlb-predic
 import { PredictionService } from './service/prediction.service';
 import {HttpClientJsonpModule, HttpClientModule} from "@angular/common/http";
 import { PredictionCardComponent } from './components/prediction-card/prediction-card.component';
+import { FooterComponent } from './core/footer/footer.component';
+import { JumbotronComponent } from './core/jumbotron/jumbotron.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { PredictionCardComponent } from './components/prediction-card/prediction
     NavbarComponent,
     NbaPredictionsComponent,
     MlbPredictionsComponent,
-    PredictionCardComponent
+    PredictionCardComponent,
+    FooterComponent,
+    JumbotronComponent
   ],
   imports: [
     BrowserModule,
