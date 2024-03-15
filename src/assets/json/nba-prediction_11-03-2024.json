@@ -1,0 +1,50 @@
+[
+  {
+    "id": 3666,
+    "commonMatchId": "0dd36a11-27a4-4c7b-8983-2a1bf1a4d1db",
+    "homeTeamName": "Cleveland Cavaliers",
+    "awayTeamName": "Brooklyn Nets",
+    "homeTeamAlias": "CLE",
+    "awayTeamAlias": "BKN",
+    "predictedAwayScore": 104.11,
+    "predictedHomeScore": 114.19,
+    "predictedTotal": 218.31,
+    "spread": 10.08,
+    "matchDate": "2024-03-10T23:00:00.000+0000",
+    "matchString": "11-03-2024",
+    "weekNumber": null,
+    "weekName": null
+  },
+  {
+    "id": 3667,
+    "commonMatchId": "4026f2f9-169d-4a7a-bd50-d485252061e5",
+    "homeTeamName": "Oklahoma City Thunder",
+    "awayTeamName": "Memphis Grizzlies",
+    "homeTeamAlias": "OKC",
+    "awayTeamAlias": "MEM",
+    "predictedAwayScore": 101.95,
+    "predictedHomeScore": 119.73,
+    "predictedTotal": 221.68,
+    "spread": 17.79,
+    "matchDate": "2024-03-10T23:00:00.000+0000",
+    "matchString": "11-03-2024",
+    "weekNumber": null,
+    "weekName": null
+  },
+  {
+    "id": 3668,
+    "commonMatchId": "53d1a56d-5ec8-451a-a96f-94644b3e5084",
+    "homeTeamName": "Los Angeles Lakers",
+    "awayTeamName": "Minnesota Timberwolves",
+    "homeTeamAlias": "LAL",
+    "awayTeamAlias": "MIN",
+    "predictedAwayScore": 111.13,
+    "predictedHomeScore": 111.33,
+    "predictedTotal": 222.45,
+    "spread": 0.2,
+    "matchDate": "2024-03-11T01:30:00.000+0000",
+    "matchString": "11-03-2024",
+    "weekNumber": null,
+    "weekName": null
+  }
+]

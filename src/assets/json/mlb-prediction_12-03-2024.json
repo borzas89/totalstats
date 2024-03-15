@@ -1,0 +1,51 @@
+[
+    {
+      "awayTeamAlias": "STL",
+      "homeTeamAlias": "BOS",
+      "predictedAwayScore": 4.85,
+      "predictedHomeScore": 5.44,
+      "predictedTotal": 10.29
+    },
+    {
+      "awayTeamAlias": "TB",
+      "homeTeamAlias": "BAL",
+      "predictedAwayScore": 5.46,
+      "predictedHomeScore": 4.55,
+      "predictedTotal": 10.01
+    },
+    {
+      "awayTeamAlias": "MIN",
+      "homeTeamAlias": "DET",
+      "predictedAwayScore": 3.83,
+      "predictedHomeScore": 4.59,
+      "predictedTotal": 8.41
+    },
+    {
+      "awayTeamAlias": "SEA",
+      "homeTeamAlias": "OAK",
+      "predictedAwayScore": 4.65,
+      "predictedHomeScore": 3.49,
+      "predictedTotal": 8.13
+    },
+    {
+      "awayTeamAlias": "CLE",
+      "homeTeamAlias": "TEX",
+      "predictedAwayScore": 3.87,
+      "predictedHomeScore": 5.23,
+      "predictedTotal": 9.1
+    },
+    {
+      "awayTeamAlias": "CHW",
+      "homeTeamAlias": "CIN",
+      "predictedAwayScore": 4.24,
+      "predictedHomeScore": 5.56,
+      "predictedTotal": 9.8
+    },
+    {
+      "awayTeamAlias": "MIL",
+      "homeTeamAlias": "CHC",
+      "predictedAwayScore": 4.22,
+      "predictedHomeScore": 4.05,
+      "predictedTotal": 8.27
+    }
+]

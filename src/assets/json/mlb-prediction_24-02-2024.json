@@ -1,0 +1,79 @@
+[
+    {
+      "awayTeamAlias": "BOS",
+      "homeTeamAlias": "BAL",
+      "predictedAwayScore": "3.95",
+      "predictedHomeScore": "3.73",
+      "predictedTotal": "7.68"
+    },
+    {
+      "awayTeamAlias": "PIT",
+      "homeTeamAlias": "MIN",
+      "predictedAwayScore": "4.15",
+      "predictedHomeScore": "5.21",
+      "predictedTotal": "9.36"
+    },
+    {
+      "awayTeamAlias": "MIA",
+      "homeTeamAlias": "STL",
+      "predictedAwayScore": "5.46",
+      "predictedHomeScore": "4.96",
+      "predictedTotal": "10.42"
+    },
+    {
+      "awayTeamAlias": "STL",
+      "homeTeamAlias": "NYM",
+      "predictedAwayScore": "5.19",
+      "predictedHomeScore": "5.74",
+      "predictedTotal": "10.93"
+    },
+    {
+      "awayTeamAlias": "COL",
+      "homeTeamAlias": "OAK",
+      "predictedAwayScore": "4.58",
+      "predictedHomeScore": "5.25",
+      "predictedTotal": "9.83"
+    },
+    {
+      "awayTeamAlias": "CHC",
+      "homeTeamAlias": "SF",
+      "predictedAwayScore": "4.26",
+      "predictedHomeScore": "3.99",
+      "predictedTotal": "8.25"
+    },
+    {
+      "awayTeamAlias": "TEX",
+      "homeTeamAlias": "KC",
+      "predictedAwayScore": "4.46",
+      "predictedHomeScore": "4.44",
+      "predictedTotal": "8.9"
+    },
+    {
+      "awayTeamAlias": "COL",
+      "homeTeamAlias": "ARI",
+      "predictedAwayScore": "4.56",
+      "predictedHomeScore": "5.31",
+      "predictedTotal": "9.87"
+    },
+    {
+      "awayTeamAlias": "LAD",
+      "homeTeamAlias": "LAA",
+      "predictedAwayScore": "5.23",
+      "predictedHomeScore": "3.87",
+      "predictedTotal": "9.1"
+    },
+    {
+      "awayTeamAlias": "MIL",
+      "homeTeamAlias": "SD",
+      "predictedAwayScore": "3.58",
+      "predictedHomeScore": "4.2",
+      "predictedTotal": "7.78"
+    },
+    {
+      "awayTeamAlias": "HOU",
+      "homeTeamAlias": "WAS",
+      "predictedAwayScore": "5.16",
+      "predictedHomeScore": "4.24",
+      "predictedTotal": "9.4"
+    }
+  ]
