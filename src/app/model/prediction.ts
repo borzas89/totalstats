@@ -5,4 +5,5 @@ export class Prediction {
   predictedHomeScore: string | undefined;
   predictedTotal: number | undefined;
   spread: string | undefined;
+  matchString: string | undefined;
 }

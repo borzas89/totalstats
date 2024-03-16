@@ -9,7 +9,7 @@ import { NavbarComponent } from './core/navbar/navbar.component';
 import { NbaPredictionsComponent } from './components/nba-predictions/nba-predictions.component';
 import { MlbPredictionsComponent } from './components/mlb-predictions/mlb-predictions.component';
 import { PredictionService } from './service/prediction.service';
-import {HttpClientJsonpModule, HttpClientModule} from "@angular/common/http";
+import { HttpClientJsonpModule, HttpClientModule} from "@angular/common/http";
 import { PredictionCardComponent } from './components/prediction-card/prediction-card.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { JumbotronComponent } from './core/jumbotron/jumbotron.component';

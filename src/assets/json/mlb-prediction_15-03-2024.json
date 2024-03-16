@@ -1,0 +1,51 @@
+[
+    {
+      "awayTeamAlias": "ATL",
+      "homeTeamAlias": "DET",
+      "predictedAwayScore": 4.04,
+      "predictedHomeScore": 4.77,
+      "predictedTotal": 8.81
+    },
+    {
+      "awayTeamAlias": "KC",
+      "homeTeamAlias": "CIN",
+      "predictedAwayScore": 5.56,
+      "predictedHomeScore": 5.89,
+      "predictedTotal": 11.44
+    },
+    {
+      "awayTeamAlias": "SF",
+      "homeTeamAlias": "OAK",
+      "predictedAwayScore": 4.14,
+      "predictedHomeScore": 4,
+      "predictedTotal": 8.14
+    },
+    {
+      "awayTeamAlias": "CHC",
+      "homeTeamAlias": "CHW",
+      "predictedAwayScore": 4.56,
+      "predictedHomeScore": 4.08,
+      "predictedTotal": 8.64
+    },
+    {
+      "awayTeamAlias": "MIN",
+      "homeTeamAlias": "BOS",
+      "predictedAwayScore": 3.79,
+      "predictedHomeScore": 4.39,
+      "predictedTotal": 8.18
+    },
+    {
+      "awayTeamAlias": "WAS",
+      "homeTeamAlias": "NYM",
+      "predictedAwayScore": 5.41,
+      "predictedHomeScore": 5.21,
+      "predictedTotal": 10.62
+    },
+    {
+      "awayTeamAlias": "PIT",
+      "homeTeamAlias": "NYY",
+      "predictedAwayScore": 4.87,
+      "predictedHomeScore": 4.25,
+      "predictedTotal": 9.11
+    }
+]

@@ -3,6 +3,8 @@
   <select #days (change)="onSelected()">
     <option default>24-02-2024</option>
     <option>25-02-2024</option>
+    <option>15-03-2024</option>
+    <option>16-03-2024</option>
   </select>
 </div>
 <div class="content align-content-center" style="margin:20px">
@@ -25,18 +27,17 @@
                 <table class="panel-box" style="padding: 20px; max-width: 500px">
                   <tr>
                     <th>Away score</th>
-                    <th>Spread</th>
                     <th>Home Score</th>
+                    <th>Total</th>
                   </tr>
                   <tr>
                     <td>{{ prediction.predictedAwayScore }}</td>
-                    <td>{{ prediction.spread }}</td>
                     <td>{{ prediction.predictedHomeScore }}</td>
+                    <td>{{ prediction.predictedTotal }}</td>
                   </tr>
                 </table>
               </div>
             </div>
-            <p>Predicted total points: {{ prediction.predictedTotal }}</p>
           </div>
         </div>
       </div>
