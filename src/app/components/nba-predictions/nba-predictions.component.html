@@ -1,23 +1,26 @@
-<h3 style="padding: 35px">NBA Predictions</h3>
-<div class="content align-content-left" style="padding-left:25px" >
-  <select #days (change)="onSelected()">
-    <option default>{{ currentDay }}</option>
-    <option>15-03-2024</option>
-    <option>16-03-2024</option>
-    <option>17-03-2024</option>
-    <option>18-03-2024</option>
-    <option>19-03-2024</option>
-    <option>20-03-2024</option>
-    <option>21-03-2024</option>
-    <option>22-03-2024</option>
-    <option>23-03-2024</option>
-  </select>
+<div class="container padding-top">
+  <h3 class="header-2 padding-mini">NBA predictions</h3>
+
+  <div class="content align-content-left padding-mini">
+    <select #days (change)="onSelected()">
+      <option default>{{ currentDay }}</option>
+      <option>23-03-2024</option>
+      <option>24-03-2024</option>
+      <option>25-03-2024</option>
+      <option>26-03-2024</option>
+      <option>27-03-2024</option>
+      <option>28-03-2024</option>
+      <option>29-03-2024</option>
+      <option>30-03-2024</option>
+    </select>
+  </div>
 </div>
+
 <div class="content align-content-center" style="margin:20px">
   <div class="card-deck">
-    <div class="card-deck pt-5 pb-5" >
+    <div class="card-deck pt-5 pb-5">
       <div class="col col-md-6 col-lg-4" style="padding:10px" *ngFor="let prediction of items ">
-        <div class="card"style="padding-bottom: 10px">
+        <div class="card" style="padding-bottom: 10px">
           <div class="card-body">
             <div class="col align-center" style="padding: 20px; max-width: 600px">
     <span class="float-left">
@@ -50,4 +53,32 @@
       </div>
     </div>
   </div>
+
+  <div class="container padding">
+    <h3 class="header-2 padding-mini">Points, overall table</h3>
+    <p>This table helps you to calculate and compare the bookmakers under/over lines. </p>
+  </div>
+  <div style="margin:20px">
+    <mat-form-field >
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Filter by name"
+        #input
+      />
+    </mat-form-field>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container
+      *ngFor="let column of columns"
+      [matColumnDef]="column.columnDef"
+    >
+      <th mat-header-cell *matHeaderCellDef >{{column.header}}</th>
+      <td mat-cell *matCellDef="let row">{{column.cell(row)}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </div>
+
+
