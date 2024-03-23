@@ -1,0 +1,101 @@
+[
+  {
+    "commonMatchId": "a13b8fdc-4773-4ed7-ac21-9473195a3cff",
+    "date": "2024-03-23",
+    "awayTeamAlias": "BOS",
+    "homeTeamAlias": "PIT",
+    "predictedAwayScore": 4.25,
+    "predictedHomeScore": 3.83,
+    "predictedTotal": 8.08,
+    "awayPitcher": "Brayan Bello",
+    "homePitcher": "Chase Anderson"
+  },
+  {
+    "commonMatchId": "82a3bde3-bb2d-4a82-a9a2-345a84267e03",
+    "date": "2024-03-23",
+    "awayTeamAlias": "BAL",
+    "homeTeamAlias": "TB",
+    "predictedAwayScore": 4.66,
+    "predictedHomeScore": 4.87,
+    "predictedTotal": 9.53,
+    "awayPitcher": "Julio Teheran",
+    "homePitcher": "Zach Eflin"
+  },
+  {
+    "commonMatchId": "5fea445c-f6c8-40d1-8ce7-3a20eaf0fbd3",
+    "date": "2024-03-23",
+    "awayTeamAlias": "TB",
+    "homeTeamAlias": "ATL",
+    "predictedAwayScore": 4.65,
+    "predictedHomeScore": 4.54,
+    "predictedTotal": 9.19,
+    "awayPitcher": "Aaron Civale",
+    "homePitcher": "Spencer Strider"
+  },
+  {
+    "commonMatchId": "9b0f9c92-dda4-49fd-a0e7-de46c634fbb4",
+    "date": "2024-03-23",
+    "awayTeamAlias": "DET",
+    "homeTeamAlias": "TOR",
+    "predictedAwayScore": 4.79,
+    "predictedHomeScore": 3.82,
+    "predictedTotal": 8.6,
+    "awayPitcher": "Kenta Maeda",
+    "homePitcher": "Yusei Kikuchi"
+  },
+  {
+    "commonMatchId": "cd0c2a93-ebd0-4c03-8396-3e69445b8144",
+    "date": "2024-03-23",
+    "awayTeamAlias": "HOU",
+    "homeTeamAlias": "NYM",
+    "predictedAwayScore": 4.62,
+    "predictedHomeScore": 5.13,
+    "predictedTotal": 9.76,
+    "awayPitcher": "Cristian Javier",
+    "homePitcher": "Jose Quintana"
+  },
+  {
+    "commonMatchId": "770dde0a-238d-442b-9337-d61eee08c13d",
+    "date": "2024-03-23",
+    "awayTeamAlias": "LAA",
+    "homeTeamAlias": "OAK",
+    "predictedAwayScore": 4.72,
+    "predictedHomeScore": 4.26,
+    "predictedTotal": 8.98,
+    "awayPitcher": "Matt Moore",
+    "homePitcher": "Ross Stripling"
+  },
+  {
+    "commonMatchId": "f2371d3f-f47c-4b44-a93c-05f2d44739c2",
+    "date": "2024-03-23",
+    "awayTeamAlias": "ARI",
+    "homeTeamAlias": "SF",
+    "predictedAwayScore": 3.91,
+    "predictedHomeScore": 4.26,
+    "predictedTotal": 8.16,
+    "awayPitcher": "Logan Allen",
+    "homePitcher": "Kyle Harrison"
+  },
+  {
+    "commonMatchId": "7d333350-1370-431d-a6c6-d1d4874715e8",
+    "date": "2024-03-23",
+    "awayTeamAlias": "CLE",
+    "homeTeamAlias": "ARI",
+    "predictedAwayScore": 4.28,
+    "predictedHomeScore": 4.22,
+    "predictedTotal": 8.5,
+    "awayPitcher": "Tanner Bibee",
+    "homePitcher": "Zac Gallen"
+  },
+  {
+    "commonMatchId": "beb4b52c-abe9-4b12-8d1a-059f8ef202b4",
+    "date": "2024-03-23",
+    "awayTeamAlias": "MIN",
+    "homeTeamAlias": "BOS",
+    "predictedAwayScore": 3.92,
+    "predictedHomeScore": 4.23,
+    "predictedTotal": 8.16,
+    "awayPitcher": "Chris Paddack",
+    "homePitcher": "Nick Pivetta"
+  }
+]
