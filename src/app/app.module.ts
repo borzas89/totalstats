@@ -21,6 +21,7 @@ import { JumbotronComponent } from './core/jumbotron/jumbotron.component';
 import {MatOptionModule} from "@angular/material/core";
 import {FormsModule} from "@angular/forms";
 import { ForbiddenComponent } from './page/forbidden/forbidden.component';
+import { AcbPredictionsComponent } from './components/acb-predictions/acb-predictions.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ForbiddenComponent } from './page/forbidden/forbidden.component';
     PredictionCardComponent,
     FooterComponent,
     JumbotronComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    AcbPredictionsComponent
   ],
   imports: [
     BrowserModule,

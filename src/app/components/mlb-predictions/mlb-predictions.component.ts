@@ -3,7 +3,7 @@ import {ElementRef, ViewChild} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
 import {combineAll, map, switchMap} from 'rxjs/operators';
 import {PredictionService} from '../../service/prediction.service';
-import {Prediction} from '../../model/prediction';
+import {MlbPrediction} from '../../model/mlbprediction';
 import {MatTableDataSource} from "@angular/material/table";
 import {Overalls} from "../../model/overalls";
 import {MatPaginator} from "@angular/material/paginator";
@@ -14,9 +14,9 @@ import {MatPaginator} from "@angular/material/paginator";
   styleUrls: ['./mlb-predictions.component.css']
 })
 export class MlbPredictionsComponent {
-  items: Array<Prediction> | undefined;
+  items: Array<MlbPrediction> | undefined;
   @ViewChild('days') days!: ElementRef;
-  selectedDay = '24-02-2024';
+  selectedDay = '2024-03-25';
 
   onSelected(): void {
     this.selectedDay = this.days.nativeElement.value;
@@ -24,7 +24,7 @@ export class MlbPredictionsComponent {
   }
 
   constructor(private predictionService: PredictionService) {
-    this.getPredictions("2024-03-23")
+    this.getPredictions("2024-03-25")
   }
 
   getPredictions(day: string) {
@@ -33,6 +33,4 @@ export class MlbPredictionsComponent {
       this.items = data
     });
   }
-
-
 }

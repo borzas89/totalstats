@@ -3,6 +3,7 @@ import {BehaviorSubject, filter, Observable, pipe} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';;
 import { Prediction } from "../model/prediction";
+import { AcbPrediction } from "../model/acbprediction";
 import { MlbPrediction } from "../model/mlbprediction";
 import { Overalls } from "../model/overalls";
 
@@ -62,4 +63,11 @@ export class PredictionService {
     public getNbaOveralls(): Observable<any> {
       return this.http.get("./assets/json/nba-overalls.json");
     }
+
+    public getFullAcbData(dayString: String): Observable<any> {
+        return this.http.get<AcbPrediction[]>("./assets/json/acb-predictions_2023.json").pipe(
+          map(data => data
+            .filter(prediction => prediction.matchString === dayString)
+          ));
+      }
 }

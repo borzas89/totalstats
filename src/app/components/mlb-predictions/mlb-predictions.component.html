@@ -1,8 +1,10 @@
 <h3 style="padding: 35px">MLB Predictions</h3>
 <div class="col">
   <select #days (change)="onSelected()">
-    <option default>2024-03-23</option>
+    <option default>2024-03-25</option>
     <option>2024-03-23</option>
+    <option>2024-03-24</option>
+    <option>2024-03-25</option>
     <option>2024-03-28</option>
   </select>
 </div>
@@ -36,6 +38,17 @@
                   </tr>
                 </table>
               </div>
+              <div >
+                <h4 class="text-center">Starting pitchers: </h4>
+              </div>
+              <div class="center">
+                <span class="float-left">
+   {{ prediction.awayPitcher }}
+     </span>
+                <span class="float-right">
+    {{ prediction.homePitcher }}
+     </span>
+            </div>
             </div>
           </div>
         </div>

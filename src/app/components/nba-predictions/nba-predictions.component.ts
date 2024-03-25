@@ -5,7 +5,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {Observable, Subscription} from 'rxjs';
 import {combineAll, map, switchMap} from 'rxjs/operators';
 import {PredictionService} from '../../service/prediction.service';
-import {Prediction} from '../../model/prediction';
+import { Prediction } from '../../model/prediction';
 import {Overalls} from '../../model/overalls';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {ElementRef, ViewChild} from '@angular/core';
@@ -19,278 +19,278 @@ interface Day {
   viewValue: string;
 }
 
-const ELEMENT_DATAS: Overalls[] = [
-  {
-  "teamName": "Atlanta Hawks",
-  "overall": 240.65,
-  "awayOverall": 236.09,
-  "homeOverall": 245.21,
-  "teamAvg": 119.4,
-  "teamHomeAvg": 122.55,
-  "teamAwayAvg": 116.24
-  },
-  {
-  "teamName": "Boston Celtics",
-  "overall": 230.53,
-  "awayOverall": 229.45,
-  "homeOverall": 231.61,
-  "teamAvg": 120.88,
-  "teamHomeAvg": 123.52,
-  "teamAwayAvg": 118.24
-  },
-  {
-  "teamName": "Brooklyn Nets",
-  "overall": 225.7,
-  "awayOverall": 225.81,
-  "homeOverall": 225.59,
-  "teamAvg": 111.77,
-  "teamHomeAvg": 113.85,
-  "teamAwayAvg": 109.69
-  },
-  {
-  "teamName": "Charlotte Hornets",
-  "overall": 223.78,
-  "awayOverall": 223.44,
-  "homeOverall": 224.12,
-  "teamAvg": 106.96,
-  "teamHomeAvg": 107.97,
-  "teamAwayAvg": 105.94
-  },
-  {
-  "teamName": "Chicago Bulls",
-  "overall": 225.68,
-  "awayOverall": 228.06,
-  "homeOverall": 223.3,
-  "teamAvg": 111.83,
-  "teamHomeAvg": 111.12,
-  "teamAwayAvg": 112.53
-  },
-  {
-  "teamName": "Cleveland Cavaliers",
-  "overall": 223.06,
-  "awayOverall": 220.68,
-  "homeOverall": 225.43,
-  "teamAvg": 113.71,
-  "teamHomeAvg": 114.54,
-  "teamAwayAvg": 112.87
-  },
-  {
-  "teamName": "Dallas Mavericks",
-  "overall": 236.68,
-  "awayOverall": 237.25,
-  "homeOverall": 236.11,
-  "teamAvg": 118.95,
-  "teamHomeAvg": 119.8,
-  "teamAwayAvg": 118.09
-  },
-  {
-  "teamName": "Denver Nuggets",
-  "overall": 225.13,
-  "awayOverall": 221.71,
-  "homeOverall": 228.55,
-  "teamAvg": 114.88,
-  "teamHomeAvg": 118.94,
-  "teamAwayAvg": 110.82
-  },
-  {
-  "teamName": "Detroit Pistons",
-  "overall": 232.52,
-  "awayOverall": 235,
-  "homeOverall": 230.03,
-  "teamAvg": 112.14,
-  "teamHomeAvg": 111.56,
-  "teamAwayAvg": 112.72
-  },
-  {
-  "teamName": "Golden State Warriors",
-  "overall": 234.93,
-  "awayOverall": 234.74,
-  "homeOverall": 235.12,
-  "teamAvg": 118.28,
-  "teamHomeAvg": 117.74,
-  "teamAwayAvg": 118.81
-  },
-  {
-  "teamName": "Houston Rockets",
-  "overall": 225.8,
-  "awayOverall": 226.18,
-  "homeOverall": 225.42,
-  "teamAvg": 113.19,
-  "teamHomeAvg": 115.64,
-  "teamAwayAvg": 110.73
-  },
-  {
-  "teamName": "Indiana Pacers",
-  "overall": 244.56,
-  "awayOverall": 242.15,
-  "homeOverall": 246.97,
-  "teamAvg": 123.1,
-  "teamHomeAvg": 125.91,
-  "teamAwayAvg": 120.3
-  },
-  {
-  "teamName": "LA Clippers",
-  "overall": 229.45,
-  "awayOverall": 230.5,
-  "homeOverall": 228.41,
-  "teamAvg": 116.83,
-  "teamHomeAvg": 116.78,
-  "teamAwayAvg": 116.88
-  },
-  {
-  "teamName": "Los Angeles Lakers",
-  "overall": 234.88,
-  "awayOverall": 237.72,
-  "homeOverall": 232.03,
-  "teamAvg": 117.09,
-  "teamHomeAvg": 118.23,
-  "teamAwayAvg": 115.94
-  },
-  {
-  "teamName": "Memphis Grizzlies",
-  "overall": 218.03,
-  "awayOverall": 222.58,
-  "homeOverall": 213.47,
-  "teamAvg": 105.76,
-  "teamHomeAvg": 103.06,
-  "teamAwayAvg": 108.45
-  },
-  {
-  "teamName": "Miami Heat",
-  "overall": 219.85,
-  "awayOverall": 214.38,
-  "homeOverall": 225.31,
-  "teamAvg": 110.2,
-  "teamHomeAvg": 112.69,
-  "teamAwayAvg": 107.71
-  },
-  {
-  "teamName": "Milwaukee Bucks",
-  "overall": 237.54,
-  "awayOverall": 236.44,
-  "homeOverall": 238.64,
-  "teamAvg": 120.46,
-  "teamHomeAvg": 122.73,
-  "teamAwayAvg": 118.18
-  },
-  {
-  "teamName": "Minnesota Timberwolves",
-  "overall": 219.63,
-  "awayOverall": 224.51,
-  "homeOverall": 214.74,
-  "teamAvg": 113.11,
-  "teamHomeAvg": 111.71,
-  "teamAwayAvg": 114.51
-  },
-  {
-  "teamName": "New Orleans Pelicans",
-  "overall": 227.07,
-  "awayOverall": 226.85,
-  "homeOverall": 227.28,
-  "teamAvg": 116.01,
-  "teamHomeAvg": 116.31,
-  "teamAwayAvg": 115.71
-  },
-  {
-  "teamName": "New York Knicks",
-  "overall": 220.55,
-  "awayOverall": 225.58,
-  "homeOverall": 215.51,
-  "teamAvg": 112.26,
-  "teamHomeAvg": 110.49,
-  "teamAwayAvg": 114.03
-  },
-  {
-  "teamName": "Oklahoma City Thunder",
-  "overall": 233.87,
-  "awayOverall": 233.5,
-  "homeOverall": 234.24,
-  "teamAvg": 120.71,
-  "teamHomeAvg": 122.82,
-  "teamAwayAvg": 118.59
-  },
-  {
-  "teamName": "Orlando Magic",
-  "overall": 220.05,
-  "awayOverall": 219.06,
-  "homeOverall": 221.03,
-  "teamAvg": 110.94,
-  "teamHomeAvg": 113.77,
-  "teamAwayAvg": 108.11
-  },
-  {
-  "teamName": "Philadelphia 76ers",
-  "overall": 228.02,
-  "awayOverall": 226.94,
-  "homeOverall": 229.09,
-  "teamAvg": 115.14,
-  "teamHomeAvg": 116.44,
-  "teamAwayAvg": 113.84
-  },
-  {
-  "teamName": "Phoenix Suns",
-  "overall": 230.95,
-  "awayOverall": 230.66,
-  "homeOverall": 231.23,
-  "teamAvg": 116.76,
-  "teamHomeAvg": 116.86,
-  "teamAwayAvg": 116.66
-  },
-  {
-  "teamName": "Portland Trail Blazers",
-  "overall": 223.41,
-  "awayOverall": 223.35,
-  "homeOverall": 223.46,
-  "teamAvg": 107.66,
-  "teamHomeAvg": 108.57,
-  "teamAwayAvg": 106.74
-  },
-  {
-  "teamName": "Sacramento Kings",
-  "overall": 236,
-  "awayOverall": 231.65,
-  "homeOverall": 240.35,
-  "teamAvg": 118.54,
-  "teamHomeAvg": 121.1,
-  "teamAwayAvg": 115.97
-  },
-  {
-  "teamName": "San Antonio Spurs",
-  "overall": 232.14,
-  "awayOverall": 230.81,
-  "homeOverall": 233.48,
-  "teamAvg": 112.34,
-  "teamHomeAvg": 114.03,
-  "teamAwayAvg": 110.64
-  },
-  {
-  "teamName": "Toronto Raptors",
-  "overall": 231.93,
-  "awayOverall": 238.94,
-  "homeOverall": 224.91,
-  "teamAvg": 113.88,
-  "teamHomeAvg": 110.91,
-  "teamAwayAvg": 116.85
-  },
-  {
-  "teamName": "Utah Jazz",
-  "overall": 238.41,
-  "awayOverall": 235.88,
-  "homeOverall": 240.94,
-  "teamAvg": 117.66,
-  "teamHomeAvg": 122.7,
-  "teamAwayAvg": 112.61
-  },
-  {
-  "teamName": "Washington Wizards",
-  "overall": 238.02,
-  "awayOverall": 238.83,
-  "homeOverall": 237.2,
-  "teamAvg": 114.18,
-  "teamHomeAvg": 113.6,
-  "teamAwayAvg": 114.75
-  }
-];
+const ELEMENT_DATAS: Overalls[] =[
+                                 {
+                                 "teamName": "Atlanta Hawks",
+                                 "overall": 240.36,
+                                 "awayOverall": 235.5,
+                                 "homeOverall": 245.21,
+                                 "teamAvg": 119.13,
+                                 "teamHomeAvg": 122.55,
+                                 "teamAwayAvg": 115.72
+                                 },
+                                 {
+                                 "teamName": "Boston Celtics",
+                                 "overall": 230.49,
+                                 "awayOverall": 229.63,
+                                 "homeOverall": 231.34,
+                                 "teamAvg": 121.12,
+                                 "teamHomeAvg": 123.34,
+                                 "teamAwayAvg": 118.89
+                                 },
+                                 {
+                                 "teamName": "Brooklyn Nets",
+                                 "overall": 225.31,
+                                 "awayOverall": 225.91,
+                                 "homeOverall": 224.71,
+                                 "teamAvg": 111.36,
+                                 "teamHomeAvg": 113.2,
+                                 "teamAwayAvg": 109.51
+                                 },
+                                 {
+                                 "teamName": "Charlotte Hornets",
+                                 "overall": 223.28,
+                                 "awayOverall": 222.44,
+                                 "homeOverall": 224.12,
+                                 "teamAvg": 106.65,
+                                 "teamHomeAvg": 107.97,
+                                 "teamAwayAvg": 105.33
+                                 },
+                                 {
+                                 "teamName": "Chicago Bulls",
+                                 "overall": 225.84,
+                                 "awayOverall": 228.51,
+                                 "homeOverall": 223.17,
+                                 "teamAvg": 112.1,
+                                 "teamHomeAvg": 111.54,
+                                 "teamAwayAvg": 112.66
+                                 },
+                                 {
+                                 "teamName": "Cleveland Cavaliers",
+                                 "overall": 222.33,
+                                 "awayOverall": 219.62,
+                                 "homeOverall": 225.03,
+                                 "teamAvg": 113.02,
+                                 "teamHomeAvg": 114.25,
+                                 "teamAwayAvg": 111.79
+                                 },
+                                 {
+                                 "teamName": "Dallas Mavericks",
+                                 "overall": 235.75,
+                                 "awayOverall": 236.73,
+                                 "homeOverall": 234.76,
+                                 "teamAvg": 118.6,
+                                 "teamHomeAvg": 119.27,
+                                 "teamAwayAvg": 117.94
+                                 },
+                                 {
+                                 "teamName": "Denver Nuggets",
+                                 "overall": 224.84,
+                                 "awayOverall": 221.58,
+                                 "homeOverall": 228.09,
+                                 "teamAvg": 114.77,
+                                 "teamHomeAvg": 118.76,
+                                 "teamAwayAvg": 110.78
+                                 },
+                                 {
+                                 "teamName": "Detroit Pistons",
+                                 "overall": 231.79,
+                                 "awayOverall": 234.33,
+                                 "homeOverall": 229.24,
+                                 "teamAvg": 111.47,
+                                 "teamHomeAvg": 110.78,
+                                 "teamAwayAvg": 112.15
+                                 },
+                                 {
+                                 "teamName": "Golden State Warriors",
+                                 "overall": 235.33,
+                                 "awayOverall": 235.19,
+                                 "homeOverall": 235.46,
+                                 "teamAvg": 118.51,
+                                 "teamHomeAvg": 117.92,
+                                 "teamAwayAvg": 119.09
+                                 },
+                                 {
+                                 "teamName": "Houston Rockets",
+                                 "overall": 226.36,
+                                 "awayOverall": 226.91,
+                                 "homeOverall": 225.8,
+                                 "teamAvg": 113.75,
+                                 "teamHomeAvg": 116,
+                                 "teamAwayAvg": 111.5
+                                 },
+                                 {
+                                 "teamName": "Indiana Pacers",
+                                 "overall": 243.34,
+                                 "awayOverall": 241.43,
+                                 "homeOverall": 245.25,
+                                 "teamAvg": 122.79,
+                                 "teamHomeAvg": 125.14,
+                                 "teamAwayAvg": 120.43
+                                 },
+                                 {
+                                 "teamName": "LA Clippers",
+                                 "overall": 229.07,
+                                 "awayOverall": 230.5,
+                                 "homeOverall": 227.64,
+                                 "teamAvg": 116.57,
+                                 "teamHomeAvg": 116.06,
+                                 "teamAwayAvg": 117.08
+                                 },
+                                 {
+                                 "teamName": "Los Angeles Lakers",
+                                 "overall": 234.73,
+                                 "awayOverall": 237.72,
+                                 "homeOverall": 231.74,
+                                 "teamAvg": 117.13,
+                                 "teamHomeAvg": 118.32,
+                                 "teamAwayAvg": 115.94
+                                 },
+                                 {
+                                 "teamName": "Memphis Grizzlies",
+                                 "overall": 218.44,
+                                 "awayOverall": 222.94,
+                                 "homeOverall": 213.94,
+                                 "teamAvg": 105.89,
+                                 "teamHomeAvg": 103.31,
+                                 "teamAwayAvg": 108.47
+                                 },
+                                 {
+                                 "teamName": "Miami Heat",
+                                 "overall": 218.94,
+                                 "awayOverall": 213.35,
+                                 "homeOverall": 224.52,
+                                 "teamAvg": 109.54,
+                                 "teamHomeAvg": 111.94,
+                                 "teamAwayAvg": 107.14
+                                 },
+                                 {
+                                 "teamName": "Milwaukee Bucks",
+                                 "overall": 237.82,
+                                 "awayOverall": 236.57,
+                                 "homeOverall": 239.06,
+                                 "teamAvg": 120.6,
+                                 "teamHomeAvg": 123,
+                                 "teamAwayAvg": 118.2
+                                 },
+                                 {
+                                 "teamName": "Minnesota Timberwolves",
+                                 "overall": 219.36,
+                                 "awayOverall": 224.19,
+                                 "homeOverall": 214.52,
+                                 "teamAvg": 113.05,
+                                 "teamHomeAvg": 111.48,
+                                 "teamAwayAvg": 114.62
+                                 },
+                                 {
+                                 "teamName": "New Orleans Pelicans",
+                                 "overall": 226.35,
+                                 "awayOverall": 225.24,
+                                 "homeOverall": 227.45,
+                                 "teamAvg": 115.81,
+                                 "teamHomeAvg": 116.61,
+                                 "teamAwayAvg": 115
+                                 },
+                                 {
+                                 "teamName": "New York Knicks",
+                                 "overall": 219.9,
+                                 "awayOverall": 224.29,
+                                 "homeOverall": 215.51,
+                                 "teamAvg": 111.89,
+                                 "teamHomeAvg": 110.49,
+                                 "teamAwayAvg": 113.29
+                                 },
+                                 {
+                                 "teamName": "Oklahoma City Thunder",
+                                 "overall": 233.59,
+                                 "awayOverall": 233.18,
+                                 "homeOverall": 234,
+                                 "teamAvg": 120.71,
+                                 "teamHomeAvg": 122.71,
+                                 "teamAwayAvg": 118.71
+                                 },
+                                 {
+                                 "teamName": "Orlando Magic",
+                                 "overall": 219.68,
+                                 "awayOverall": 219.06,
+                                 "homeOverall": 220.29,
+                                 "teamAvg": 110.98,
+                                 "teamHomeAvg": 113.85,
+                                 "teamAwayAvg": 108.11
+                                 },
+                                 {
+                                 "teamName": "Philadelphia 76ers",
+                                 "overall": 226.54,
+                                 "awayOverall": 225.71,
+                                 "homeOverall": 227.36,
+                                 "teamAvg": 114.32,
+                                 "teamHomeAvg": 115.72,
+                                 "teamAwayAvg": 112.91
+                                 },
+                                 {
+                                 "teamName": "Phoenix Suns",
+                                 "overall": 231.49,
+                                 "awayOverall": 231.82,
+                                 "homeOverall": 231.16,
+                                 "teamAvg": 117.07,
+                                 "teamHomeAvg": 117.11,
+                                 "teamAwayAvg": 117.03
+                                 },
+                                 {
+                                 "teamName": "Portland Trail Blazers",
+                                 "overall": 223.64,
+                                 "awayOverall": 223.45,
+                                 "homeOverall": 223.84,
+                                 "teamAvg": 107.71,
+                                 "teamHomeAvg": 108.65,
+                                 "teamAwayAvg": 106.76
+                                 },
+                                 {
+                                 "teamName": "Sacramento Kings",
+                                 "overall": 234.54,
+                                 "awayOverall": 230.53,
+                                 "homeOverall": 238.55,
+                                 "teamAvg": 117.98,
+                                 "teamHomeAvg": 120.18,
+                                 "teamAwayAvg": 115.78
+                                 },
+                                 {
+                                 "teamName": "San Antonio Spurs",
+                                 "overall": 231.45,
+                                 "awayOverall": 230.81,
+                                 "homeOverall": 232.09,
+                                 "teamAvg": 112.1,
+                                 "teamHomeAvg": 113.56,
+                                 "teamAwayAvg": 110.64
+                                 },
+                                 {
+                                 "teamName": "Toronto Raptors",
+                                 "overall": 231.3,
+                                 "awayOverall": 238.03,
+                                 "homeOverall": 224.57,
+                                 "teamAvg": 113.16,
+                                 "teamHomeAvg": 110.06,
+                                 "teamAwayAvg": 116.26
+                                 },
+                                 {
+                                 "teamName": "Utah Jazz",
+                                 "overall": 237.26,
+                                 "awayOverall": 234.86,
+                                 "homeOverall": 239.66,
+                                 "teamAvg": 116.76,
+                                 "teamHomeAvg": 121.51,
+                                 "teamAwayAvg": 112
+                                 },
+                                 {
+                                 "teamName": "Washington Wizards",
+                                 "overall": 237.6,
+                                 "awayOverall": 238.46,
+                                 "homeOverall": 236.73,
+                                 "teamAvg": 113.74,
+                                 "teamHomeAvg": 113.18,
+                                 "teamAwayAvg": 114.3
+                                 }
+                                 ];
 @Component({
   selector: 'app-nba-predictions',
   templateUrl: './nba-predictions.component.html',
