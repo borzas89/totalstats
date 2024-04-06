@@ -5,6 +5,7 @@ import {map} from 'rxjs/operators';;
 import { Prediction } from "../model/prediction";
 import { AcbPrediction } from "../model/acbprediction";
 import { MlbPrediction } from "../model/mlbprediction";
+import { MlbResult } from "../model/mlbresult";
 import { Overalls } from "../model/overalls";
 
 let API_NBA_URL = "https://totalnba.herokuapp.com/api/prediction/day/"
@@ -53,8 +54,8 @@ export class PredictionService {
       ));
   }
 
-    public getFullMLBData(dayString: String): Observable<any> {
-      return this.http.get<MlbPrediction[]>("./assets/json/mlb-predictions_2023.json").pipe(
+  public getFullMLBData(dayString: String): Observable<any> {
+      return this.http.get<MlbPrediction[]>("./assets/json/mlb-predictions_2024.json").pipe(
         map(data => data
           .filter(prediction => prediction.date === dayString)
         ));
@@ -65,9 +66,13 @@ export class PredictionService {
     }
 
     public getFullAcbData(dayString: String): Observable<any> {
-        return this.http.get<AcbPrediction[]>("./assets/json/acb-predictions_2023.json").pipe(
+        return this.http.get<AcbPrediction[]>("./assets/json/acb-predictions_2024.json").pipe(
           map(data => data
             .filter(prediction => prediction.matchString === dayString)
           ));
       }
+
+    public getMLBResults(): Observable<any> {
+            return this.http.get("./assets/json/mlb-model-results-2024.json");
+          }
 }

@@ -346,7 +346,10 @@ export class NbaPredictionsComponent implements OnInit, OnDestroy {
   dataSource: any = MatTableDataSource<Overalls>;
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(ELEMENT_DATAS)
+  this.predictionService.getNbaOveralls().subscribe((overalls) => {
+          this.dataSource = new MatTableDataSource(overalls);
+      });
+     this.dataSource = new MatTableDataSource(this.overalls);
     this.dataSource.filterPredicate = (data: Overalls, filter: string) => {
       const key = this.currentFilterKey || '';
       const source = key ? String(data[key]) : JSON.stringify(data);
@@ -366,7 +369,6 @@ export class NbaPredictionsComponent implements OnInit, OnDestroy {
 
   constructor(private predictionService: PredictionService) {
     this.getPredictions(this.currentDay)
-    this.getOveralls()
   }
 
   getPredictions(day: string) {
@@ -375,16 +377,8 @@ export class NbaPredictionsComponent implements OnInit, OnDestroy {
     });
   }
 
-  getOveralls() {
-    this.predictionService.getNbaOveralls().subscribe(data => {
-      console.log(data)
-      this.overalls = data
-    });
-  }
-
   dataSubscription: Subscription | undefined;
   currentFilterKey: string | undefined;
-
 
   ngOnDestroy(): void {
     // @ts-ignore
