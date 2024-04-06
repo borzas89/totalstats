@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -22,6 +21,8 @@ import {MatOptionModule} from "@angular/material/core";
 import {FormsModule} from "@angular/forms";
 import { ForbiddenComponent } from './page/forbidden/forbidden.component';
 import { AcbPredictionsComponent } from './components/acb-predictions/acb-predictions.component';
+import { MlbResultsComponent } from './components/mlb-results/mlb-results.component';
+import { MlbDetailsComponent } from './components/mlb-details/mlb-details.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { AcbPredictionsComponent } from './components/acb-predictions/acb-predic
     FooterComponent,
     JumbotronComponent,
     ForbiddenComponent,
-    AcbPredictionsComponent
+    AcbPredictionsComponent,
+    MlbResultsComponent,
+    MlbDetailsComponent
   ],
   imports: [
     BrowserModule,
