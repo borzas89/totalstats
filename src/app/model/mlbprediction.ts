@@ -8,4 +8,6 @@ export class MlbPrediction {
   predictedTotal: number | undefined;
   awayPitcher: string | undefined;
   homePitcher: string | undefined;
+  awayPitcherERA: number| undefined;
+  homePitcherERA: number| undefined;
 }

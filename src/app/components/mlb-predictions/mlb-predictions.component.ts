@@ -16,7 +16,7 @@ import {MatPaginator} from "@angular/material/paginator";
 export class MlbPredictionsComponent {
   items: Array<MlbPrediction> | undefined;
   @ViewChild('days') days!: ElementRef;
-  selectedDay = '2024-03-25';
+  selectedDay = '2024-04-06';
 
   onSelected(): void {
     this.selectedDay = this.days.nativeElement.value;
@@ -24,7 +24,7 @@ export class MlbPredictionsComponent {
   }
 
   constructor(private predictionService: PredictionService) {
-    this.getPredictions("2024-03-25")
+    this.getPredictions("2024-04-06")
   }
 
   getPredictions(day: string) {
