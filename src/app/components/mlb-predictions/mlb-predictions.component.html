@@ -2,14 +2,18 @@
 <h3 class="header-2 padding-mini">MLB predictions</h3>
 <div class="col">
   <select #days (change)="onSelected()">
-    <option default>2024-04-06</option>
-    <option>2024-04-01</option>
-    <option>2024-04-02</option>
-    <option>2024-04-03</option>
-    <option>2024-04-04</option>
-    <option>2024-04-05</option>
-    <option>2024-04-06</option>
+    <option default>2024-05-08</option>
+    <option>2024-05-01</option>
+    <option>2024-05-02</option>
+    <option>2024-05-03</option>
+    <option>2024-05-04</option>
+    <option>2024-05-05</option>
+    <option>2024-05-06</option>
+    <option>2024-05-07</option>
+    <option>2024-05-08</option>
+    <option>2024-05-09</option>
   </select>
+  <a class="nav-link" href="/mlb-results">Previous MLB results - click here</a>
 </div>
 <div class="content align-content-center" style="margin:20px">
   <div class="card-deck">
@@ -62,4 +66,23 @@
   </div>
 </div>
 </div>
+
+<div class="container padding">
+  <h3 class="header-2 padding-mini">MLB Standings table</h3>
+  <p> </p>
+</div>
+<div class="container padding">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container
+      *ngFor="let column of columns"
+      [matColumnDef]="column.columnDef"
+    >
+      <th mat-header-cell *matHeaderCellDef >{{column.header}}</th>
+      <td mat-cell *matCellDef="let row">{{column.cell(row)}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
 
