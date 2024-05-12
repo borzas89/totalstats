@@ -2,16 +2,15 @@
 <h3 class="header-2 padding-mini">MLB predictions</h3>
 <div class="col">
   <select #days (change)="onSelected()">
-    <option default>2024-05-08</option>
-    <option>2024-05-01</option>
-    <option>2024-05-02</option>
-    <option>2024-05-03</option>
+    <option default>{{ currentDay }}</option>
     <option>2024-05-04</option>
     <option>2024-05-05</option>
     <option>2024-05-06</option>
     <option>2024-05-07</option>
     <option>2024-05-08</option>
     <option>2024-05-09</option>
+    <option>2024-05-10</option>
+    <option>2024-05-11</option>
   </select>
   <a class="nav-link" href="/mlb-results">Previous MLB results - click here</a>
 </div>
@@ -59,6 +58,7 @@
                 </tr>
               </table>
             </div>
+            <a [routerLink]="['../mlb-details/',prediction.commonMatchId]" class="row justify-content-end pr-4">More info</a>
           </div>
         </div>
       </div>

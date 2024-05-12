@@ -8,13 +8,13 @@ import { MlbDetailsComponent } from './components/mlb-details/mlb-details.compon
 import { JumbotronComponent } from './core/jumbotron/jumbotron.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-    { path: 'home', component: JumbotronComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'home', component: JumbotronComponent },
   { path: 'nba-predictions', component: NbaPredictionsComponent },
   { path: 'mlb-predictions', component: MlbPredictionsComponent },
   { path: 'acb-predictions', component: AcbPredictionsComponent },
   { path: 'mlb-results', component: MlbResultsComponent },
-  { path: 'mlb-details', component: MlbDetailsComponent },
+  { path: 'mlb-details/:id', component: MlbDetailsComponent }
 ];
 
 @NgModule({

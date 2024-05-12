@@ -8,8 +8,14 @@ import { MlbPrediction } from "../../model/mlbprediction";
 import { MatTableDataSource } from "@angular/material/table";
 import { Overalls } from "../../model/overalls";
 import { Standings } from "../../model/standings";
+import { DatePipe } from '@angular/common';
+import { formatDate } from '@angular/common';
 import { MatPaginator } from "@angular/material/paginator";
 
+interface Day {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: "app-mlb-predictions",
@@ -19,6 +25,11 @@ import { MatPaginator } from "@angular/material/paginator";
 export class MlbPredictionsComponent implements OnInit {
   items: Array<MlbPrediction> | undefined;
   standings: Array<Standings> | undefined;
+
+  myDate = new Date();
+  currentDay = formatDate(this.myDate, 'yyyy-MM-dd', 'en-US');
+   @ViewChild('days') days!: ElementRef;
+   selectedDay = this.currentDay;
 
   displayedColumns: string[] = [
     "City",
@@ -70,19 +81,16 @@ export class MlbPredictionsComponent implements OnInit {
        this.dataSource = new MatTableDataSource(this.standings);
    }
 
-  @ViewChild("days") days!: ElementRef;
-  selectedDay = "2024-05-08";
-
   onSelected(): void {
-    this.selectedDay = this.days.nativeElement.value;
-    this.getPredictions(this.selectedDay);
+     this.selectedDay = this.days.nativeElement.value;
+     this.getPredictions(this.selectedDay);
   }
 
   constructor(
     private predictionService: PredictionService,
     private standingsService: StandingsService
   ) {
-    this.getPredictions("2024-05-08");
+    this.getPredictions(this.currentDay)
     this.getAllStandings();
   }
 
