@@ -1,13 +1,13 @@
-export class MlbPrediction {
-  commonMatchId: string | undefined;
-  date: string | undefined;
-  awayTeamAlias: string | undefined;
-  homeTeamAlias: string | undefined;
-  predictedAwayScore: number | undefined;
-  predictedHomeScore: string | undefined;
-  predictedTotal: number | undefined;
-  awayPitcher: string | undefined;
-  homePitcher: string | undefined;
-  awayPitcherERA: number| undefined;
-  homePitcherERA: number| undefined;
+export interface MlbPrediction {
+  commonMatchId: string;
+  date: string;
+  awayTeamAlias: string;
+  homeTeamAlias: string;
+  predictedAwayScore: number;
+  predictedHomeScore: string;
+  predictedTotal: number;
+  awayPitcher: string;
+  homePitcher: string;
+  awayPitcherERA: number;
+  homePitcherERA: number;
 }

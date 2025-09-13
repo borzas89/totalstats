@@ -1,0 +1,322 @@
+[
+  {
+    "commonMatchId": "56779053-89da-4939-bc22-9669ae1fe05a",
+    "date": "2025-09-05",
+    "awayTeamAlias": "DAL",
+    "homeTeamAlias": "PHI",
+    "predictedAwayScore": "22",
+    "predictedHomeScore": "33",
+    "predictedTotal": "55",
+    "weekNumber": "1"
+  },
+  {
+    "commonMatchId": "f895a349-36ec-4b9a-b7a3-7830ea95f07a",
+    "date": "2025-09-06",
+    "awayTeamAlias": "KC",
+    "homeTeamAlias": "LAC",
+    "predictedAwayScore": "22",
+    "predictedHomeScore": "20",
+    "predictedTotal": "42",
+    "weekNumber": "1"
+  },
+  {
+    "commonMatchId": "0ab5e37d-0f79-40c6-b536-ff88c7be5286",
+    "date": "2025-09-07",
+    "awayTeamAlias": "TB",
+    "homeTeamAlias": "ATL",
+    "predictedAwayScore": "30",
+    "predictedHomeScore": "22",
+    "predictedTotal": "52",
+    "weekNumber": "1"
+  },
+  {
+    "commonMatchId": "56ae5686-bcc1-41a5-8988-66c3c7741a05",
+    "date": "2025-09-07",
+    "awayTeamAlias": "PIT",
+    "homeTeamAlias": "NYJ",
+    "predictedAwayScore": "24",
+    "predictedHomeScore": "17",
+    "predictedTotal": "41",
+    "weekNumber": "1"
+  },
+  {
+    "commonMatchId": "5894a475-84a9-4aa1-b505-e72281da8b1d",
+    "date": "2025-09-07",
+    "awayTeamAlias": "MIA",
+    "homeTeamAlias": "IND",
+    "predictedAwayScore": "27",
+    "predictedHomeScore": "26",
+    "predictedTotal": "53",
+    "weekNumber": "1"
+  },
+  {
+    "commonMatchId": "5a6e288f-ccbd-48ab-b476-0b019e93255d",
+    "date": "2025-09-07",
+    "awayTeamAlias": "CAR",
+    "homeTeamAlias": "JAC",
+    "predictedAwayScore": "22",
+    "predictedHomeScore": "28",
+    "predictedTotal": "50",
+    "weekNumber": "1"
+  },
+  {
+    "commonMatchId": "a01d03e0-c8aa-43df-ae79-c69f8ae53365",
+    "date": "2025-09-07",
+    "awayTeamAlias": "NYG",
+    "homeTeamAlias": "WAS",
+    "predictedAwayScore": "21",
+    "predictedHomeScore": "32",
+    "predictedTotal": "53",
+    "weekNumber": "1"
+  },
+  {
+    "commonMatchId": "a2fe3756-470f-49f4-ae92-df63ba01ce26",
+    "date": "2025-09-07",
+    "awayTeamAlias": "ARI",
+    "homeTeamAlias": "NO",
+    "predictedAwayScore": "23",
+    "predictedHomeScore": "20",
+    "predictedTotal": "43",
+    "weekNumber": "1"
+  },
+  {
+    "commonMatchId": "d42c74e9-0e0f-4177-a842-cdb6877068cf",
+    "date": "2025-09-07",
+    "awayTeamAlias": "CIN",
+    "homeTeamAlias": "CLE",
+    "predictedAwayScore": "29",
+    "predictedHomeScore": "21",
+    "predictedTotal": "50",
+    "weekNumber": "1"
+  },
+  {
+    "commonMatchId": "ea3242f9-4081-413f-8bd9-a455f34c4934",
+    "date": "2025-09-07",
+    "awayTeamAlias": "LV",
+    "homeTeamAlias": "NE",
+    "predictedAwayScore": "21",
+    "predictedHomeScore": "25",
+    "predictedTotal": "46",
+    "weekNumber": "1"
+  },
+  {
+    "commonMatchId": "2d7adfde-4e24-4d5f-aa42-6f0da8b41e06",
+    "date": "2025-09-07",
+    "awayTeamAlias": "SF",
+    "homeTeamAlias": "SEA",
+    "predictedAwayScore": "21",
+    "predictedHomeScore": "24",
+    "predictedTotal": "45",
+    "weekNumber": "1"
+  },
+  {
+    "commonMatchId": "966ccd2b-5eb5-4780-9e27-720897b6c815",
+    "date": "2025-09-07",
+    "awayTeamAlias": "TEN",
+    "homeTeamAlias": "DEN",
+    "predictedAwayScore": "18",
+    "predictedHomeScore": "29",
+    "predictedTotal": "47",
+    "weekNumber": "1"
+  },
+  {
+    "commonMatchId": "348ecbd5-411a-4a2d-8596-1fb19ab03188",
+    "date": "2025-09-07",
+    "awayTeamAlias": "DET",
+    "homeTeamAlias": "GB",
+    "predictedAwayScore": "22",
+    "predictedHomeScore": "27",
+    "predictedTotal": "49",
+    "weekNumber": "1"
+  },
+  {
+    "commonMatchId": "408d631d-19cd-4f4d-880e-45072408530c",
+    "date": "2025-09-07",
+    "awayTeamAlias": "HOU",
+    "homeTeamAlias": "LA",
+    "predictedAwayScore": "20",
+    "predictedHomeScore": "24",
+    "predictedTotal": "44",
+    "weekNumber": "1"
+  },
+  {
+    "commonMatchId": "be1ba854-b1c4-46ad-b328-476180fa0279",
+    "date": "2025-09-08",
+    "awayTeamAlias": "BAL",
+    "homeTeamAlias": "BUF",
+    "predictedAwayScore": "25",
+    "predictedHomeScore": "27",
+    "predictedTotal": "52",
+    "weekNumber": "1"
+  },
+  {
+    "commonMatchId": "fbfcee5c-907c-4a1e-a6ab-82adcd624399",
+    "date": "2025-09-08",
+    "awayTeamAlias": "MIN",
+    "homeTeamAlias": "CHI",
+    "predictedAwayScore": "23",
+    "predictedHomeScore": "20",
+    "predictedTotal": "43",
+    "weekNumber": "1"
+  },
+  {
+    "commonMatchId": "b0563750-d49e-4362-b862-8439170dd4b7",
+    "date": "2025-09-12",
+    "awayTeamAlias": "WAS",
+    "homeTeamAlias": "GB",
+    "predictedAwayScore": "21",
+    "predictedHomeScore": "31",
+    "predictedTotal": "52",
+    "weekNumber": "2"
+  },
+  {
+    "commonMatchId": "63ac00ee-e264-41d5-af01-8852da595d57",
+    "date": "2025-09-14",
+    "awayTeamAlias": "LAR",
+    "homeTeamAlias": "TEN",
+    "predictedAwayScore": "24",
+    "predictedHomeScore": "18",
+    "predictedTotal": "42",
+    "weekNumber": "2"
+  },
+  {
+    "commonMatchId": "66846f31-8329-45fa-9d18-1b6bbb279f59",
+    "date": "2025-09-14",
+    "awayTeamAlias": "SEA",
+    "homeTeamAlias": "PIT",
+    "predictedAwayScore": "18",
+    "predictedHomeScore": "23",
+    "predictedTotal": "41",
+    "weekNumber": "2"
+  },
+  {
+    "commonMatchId": "8f340c1d-e3e9-4ac4-8da2-461c8031dd2a",
+    "date": "2025-09-14",
+    "awayTeamAlias": "BUF",
+    "homeTeamAlias": "NYJ",
+    "predictedAwayScore": "31",
+    "predictedHomeScore": "18",
+    "predictedTotal": "49",
+    "weekNumber": "2"
+  },
+  {
+    "commonMatchId": "9d20337a-6e5d-4e41-a19e-ba85777ad622",
+    "date": "2025-09-14",
+    "awayTeamAlias": "CHI",
+    "homeTeamAlias": "DET",
+    "predictedAwayScore": "20",
+    "predictedHomeScore": "30",
+    "predictedTotal": "50",
+    "weekNumber": "2"
+  },
+  {
+    "commonMatchId": "b2f5ffd3-bac5-40c7-8f5a-2ca47767fff4",
+    "date": "2025-09-14",
+    "awayTeamAlias": "NYG",
+    "homeTeamAlias": "DAL",
+    "predictedAwayScore": "21",
+    "predictedHomeScore": "30",
+    "predictedTotal": "51",
+    "weekNumber": "2"
+  },
+  {
+    "commonMatchId": "b352053a-c00a-4ad5-8932-b98922c9f7f2",
+    "date": "2025-09-14",
+    "awayTeamAlias": "CLE",
+    "homeTeamAlias": "BAL",
+    "predictedAwayScore": "16",
+    "predictedHomeScore": "32",
+    "predictedTotal": "48",
+    "weekNumber": "2"
+  },
+  {
+    "commonMatchId": "e195b897-a9dc-4121-a119-4527fc910b75",
+    "date": "2025-09-14",
+    "awayTeamAlias": "SF",
+    "homeTeamAlias": "NO",
+    "predictedAwayScore": "22",
+    "predictedHomeScore": "20",
+    "predictedTotal": "42",
+    "weekNumber": "2"
+  },
+  {
+    "commonMatchId": "e89f104f-206a-4d4d-8a3a-1fb936d3dbe8",
+    "date": "2025-09-14",
+    "awayTeamAlias": "NE",
+    "homeTeamAlias": "MIA",
+    "predictedAwayScore": "21",
+    "predictedHomeScore": "26",
+    "predictedTotal": "47",
+    "weekNumber": "2"
+  },
+  {
+    "commonMatchId": "f46a7e24-0bd3-46ad-a427-83f608f99989",
+    "date": "2025-09-14",
+    "awayTeamAlias": "JAC",
+    "homeTeamAlias": "CIN",
+    "predictedAwayScore": "23",
+    "predictedHomeScore": "31",
+    "predictedTotal": "54",
+    "weekNumber": "2"
+  },
+  {
+    "commonMatchId": "087c941e-86d7-4b05-a559-94984a397479",
+    "date": "2025-09-14",
+    "awayTeamAlias": "CAR",
+    "homeTeamAlias": "ARI",
+    "predictedAwayScore": "20",
+    "predictedHomeScore": "30",
+    "predictedTotal": "50",
+    "weekNumber": "2"
+  },
+  {
+    "commonMatchId": "50e111dc-c863-4d0d-a166-f381ea03dfe8",
+    "date": "2025-09-14",
+    "awayTeamAlias": "DEN",
+    "homeTeamAlias": "IND",
+    "predictedAwayScore": "24",
+    "predictedHomeScore": "22",
+    "predictedTotal": "46",
+    "weekNumber": "2"
+  },
+  {
+    "commonMatchId": "0aaa11dc-bb25-416d-a0e6-44b3ea5dea7e",
+    "date": "2025-09-14",
+    "awayTeamAlias": "PHI",
+    "homeTeamAlias": "KC",
+    "predictedAwayScore": "24",
+    "predictedHomeScore": "22",
+    "predictedTotal": "46",
+    "weekNumber": "2"
+  },
+  {
+    "commonMatchId": "04d8a8f3-cd81-45b7-a76f-44dbd0fd3bbd",
+    "date": "2025-09-15",
+    "awayTeamAlias": "ATL",
+    "homeTeamAlias": "MIN",
+    "predictedAwayScore": "19",
+    "predictedHomeScore": "29",
+    "predictedTotal": "48",
+    "weekNumber": "2"
+  },
+  {
+    "commonMatchId": "d3c61c89-f2b5-4afd-a594-1374b81ea749",
+    "date": "2025-09-15",
+    "awayTeamAlias": "TB",
+    "homeTeamAlias": "HOU",
+    "predictedAwayScore": "24",
+    "predictedHomeScore": "22",
+    "predictedTotal": "46",
+    "weekNumber": "2"
+  },
+  {
+    "commonMatchId": "32436168-69ae-4323-b742-9a76ffc6ef48",
+    "date": "2025-09-16",
+    "awayTeamAlias": "LAC",
+    "homeTeamAlias": "LV",
+    "predictedAwayScore": "24",
+    "predictedHomeScore": "20",
+    "predictedTotal": "44",
+    "weekNumber": "2"
+  }
+]

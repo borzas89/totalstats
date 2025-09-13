@@ -5,6 +5,7 @@ import { map } from "rxjs/operators";
 import { Prediction } from "../model/prediction";
 import { AcbPrediction } from "../model/acbprediction";
 import { MlbPrediction } from "../model/mlbprediction";
+import { NflPrediction } from "../model/nflprediction";
 import { MlbResult } from "../model/mlbresult";
 import { Overalls } from "../model/overalls";
 
@@ -51,7 +52,7 @@ export class PredictionService {
 
   public getFullNbaData(dayString: String): Observable<any> {
     return this.http
-      .get<Prediction[]>("./assets/json/nba-predictions_2023.json")
+      .get<Prediction[]>("./assets/json/nba-predictions_2024.json")
       .pipe(
         map((data) =>
           data.filter((prediction) => prediction.matchString === dayString)
@@ -69,9 +70,47 @@ export class PredictionService {
       );
   }
 
+    public getMLBPredictionById(idString: String): Observable<any> {
+      return this.http
+        .get<MlbPrediction[]>("./assets/json/mlb-predictions_2024.json")
+        .pipe(
+          map((data) =>
+            data.filter((prediction) => prediction.commonMatchId === idString)
+          )
+        );
+    }
+
+   public getNflPredictionByWeek(week: String): Observable<any> {
+          return this.http
+            .get<NflPrediction[]>("./assets/json/nfl-predictions_2025.json")
+            .pipe(
+              map((data) =>
+                data.filter((prediction) => prediction.weekNumber === week)
+              )
+            );
+        }
+
   public getNbaOveralls(): Observable<any> {
     return this.http.get("./assets/json/nba-overalls.json");
   }
+
+  public getNflPredictions(): Observable<any> {
+      return this.http.get("./assets/json/nfl-predictions_2024.json");
+    }
+
+  public getWnbaOveralls(): Observable<any> {
+      return this.http.get("./assets/json/wnba-overalls.json");
+  }
+
+  public getFullWnbaData(dayString: String): Observable<any> {
+      return this.http
+        .get<Prediction[]>("./assets/json/wnba-predictions_2024.json")
+        .pipe(
+          map((data) =>
+            data.filter((prediction) => prediction.matchString === dayString)
+          )
+        );
+    }
 
   public getFullAcbData(dayString: String): Observable<any> {
     return this.http
@@ -86,4 +125,14 @@ export class PredictionService {
   public getMLBResults(): Observable<any> {
     return this.http.get("./assets/json/mlb-model-results-2024.json");
   }
+
+    public getMLBResultsByPitcher(pitcherName: String): Observable<any> {
+      return this.http
+        .get<MlbResult[]>("./assets/json/mlb-model-results-2024.json")
+        .pipe(
+          map((data) =>
+            data.filter((result) => (result.awayPitcher || result.homePitcher) === pitcherName)
+          )
+        );
+    }
 }

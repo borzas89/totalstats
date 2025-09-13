@@ -23,6 +23,8 @@ import { ForbiddenComponent } from './page/forbidden/forbidden.component';
 import { AcbPredictionsComponent } from './components/acb-predictions/acb-predictions.component';
 import { MlbResultsComponent } from './components/mlb-results/mlb-results.component';
 import { MlbDetailsComponent } from './components/mlb-details/mlb-details.component';
+import { WnbaPredictionsComponent } from './components/wnba-predictions/wnba-predictions.component';
+import { NflPredictionsComponent } from './components/nfl-predictions/nfl-predictions.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { MlbDetailsComponent } from './components/mlb-details/mlb-details.compon
     ForbiddenComponent,
     AcbPredictionsComponent,
     MlbResultsComponent,
-    MlbDetailsComponent
+    MlbDetailsComponent,
+    WnbaPredictionsComponent,
+    NflPredictionsComponent
   ],
   imports: [
     BrowserModule,

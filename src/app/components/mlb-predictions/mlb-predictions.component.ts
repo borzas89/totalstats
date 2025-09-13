@@ -32,7 +32,6 @@ export class MlbPredictionsComponent implements OnInit {
    selectedDay = this.currentDay;
 
   displayedColumns: string[] = [
-    "City",
     "Name",
     "Wins",
     "Losses",
@@ -41,11 +40,6 @@ export class MlbPredictionsComponent implements OnInit {
   ];
 
   columns = [
-    {
-      columnDef: "City",
-      header: "City",
-      cell: (element: Standings) => `${element.City}`,
-    },
     {
       columnDef: "Name",
       header: "Name",

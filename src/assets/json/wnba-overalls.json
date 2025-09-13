@@ -1,0 +1,110 @@
+[
+  {
+    "teamName": "Atlanta Dream",
+    "overall": 156.65,
+    "awayOverall": 157.86,
+    "homeOverall": 155.44,
+    "teamAvg": 76.38,
+    "teamHomeAvg": 73.33,
+    "teamAwayAvg": 79.43
+  },
+  {
+    "teamName": "Chicago Sky",
+    "overall": 161.72,
+    "awayOverall": 160.43,
+    "homeOverall": 163,
+    "teamAvg": 80.19,
+    "teamHomeAvg": 79.67,
+    "teamAwayAvg": 80.71
+  },
+  {
+    "teamName": "Connecticut Sun",
+    "overall": 153.18,
+    "awayOverall": 155.75,
+    "homeOverall": 150.6,
+    "teamAvg": 79.8,
+    "teamHomeAvg": 79.6,
+    "teamAwayAvg": 80
+  },
+  {
+    "teamName": "Dallas Wings",
+    "overall": 168.13,
+    "awayOverall": 165.4,
+    "homeOverall": 170.86,
+    "teamAvg": 80.82,
+    "teamHomeAvg": 82.43,
+    "teamAwayAvg": 79.2
+  },
+  {
+    "teamName": "Indiana Fever",
+    "overall": 168.82,
+    "awayOverall": 167.64,
+    "homeOverall": 170,
+    "teamAvg": 80.95,
+    "teamHomeAvg": 82.63,
+    "teamAwayAvg": 79.27
+  },
+  {
+    "teamName": "Las Vegas Aces",
+    "overall": 172.5,
+    "awayOverall": 173.67,
+    "homeOverall": 171.33,
+    "teamAvg": 88.08,
+    "teamHomeAvg": 86.33,
+    "teamAwayAvg": 89.83
+  },
+  {
+    "teamName": "Los Angeles Sparks",
+    "overall": 162.68,
+    "awayOverall": 165.64,
+    "homeOverall": 159.71,
+    "teamAvg": 77.91,
+    "teamHomeAvg": 78,
+    "teamAwayAvg": 77.82
+  },
+  {
+    "teamName": "Minnesota Lynx",
+    "overall": 160.74,
+    "awayOverall": 166.57,
+    "homeOverall": 154.9,
+    "teamAvg": 85.1,
+    "teamHomeAvg": 82.9,
+    "teamAwayAvg": 87.29
+  },
+  {
+    "teamName": "New York Liberty",
+    "overall": 166.5,
+    "awayOverall": 164.22,
+    "homeOverall": 168.78,
+    "teamAvg": 88.11,
+    "teamHomeAvg": 89.44,
+    "teamAwayAvg": 86.78
+  },
+  {
+    "teamName": "Phoenix Mercury",
+    "overall": 166.47,
+    "awayOverall": 157.38,
+    "homeOverall": 175.56,
+    "teamAvg": 81.96,
+    "teamHomeAvg": 89.78,
+    "teamAwayAvg": 74.13
+  },
+  {
+    "teamName": "Seattle Storm",
+    "overall": 160.75,
+    "awayOverall": 163.5,
+    "homeOverall": 158,
+    "teamAvg": 83.04,
+    "teamHomeAvg": 84.57,
+    "teamAwayAvg": 81.5
+  },
+  {
+    "teamName": "Washington Mystics",
+    "overall": 161.89,
+    "awayOverall": 160.11,
+    "homeOverall": 163.67,
+    "teamAvg": 79.28,
+    "teamHomeAvg": 82.11,
+    "teamAwayAvg": 76.44
+  }
+]

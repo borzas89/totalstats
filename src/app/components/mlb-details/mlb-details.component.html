@@ -1,8 +1,72 @@
 <div class="container padding-top" style="min-height:450px">
   <h3 class="header-2 padding-mini">MLB Details</h3>
-<p>MLB Details page under constructions! Content coming soon...</p>
-</div>
-  <div class="content align-content-center" style="margin:20px">
+<p>MLB Details page under constructions! More content coming soon...</p>
+
+  <div >
+    <h2 class="text-center">{{ prediction.awayTeamAlias }} vs. {{ prediction.homeTeamAlias }}</h2>
+
+    <table class="panel-box" style="padding: 20px; ">
+      <tr>
+        <th>Away score</th>
+        <th>Home Score</th>
+        <th>Total</th>
+      </tr>
+      <tr>
+        <td>{{ prediction.predictedAwayScore }}</td>
+        <td>{{ prediction.predictedHomeScore }}</td>
+        <td>{{ prediction.predictedTotal }}</td>
+      </tr>
+    </table>
+    <table class="panel-box" style="padding: 20px; ">
+      <tr>
+        <th> {{ prediction.awayPitcher }} (ERA) </th>
+        <th> {{ prediction.homePitcher }} (ERA) </th>
+      </tr>
+      <tr>
+        <td>{{ prediction.awayPitcherERA }}</td>
+        <td>{{ prediction.homePitcherERA }}</td>
+      </tr>
+    </table>
+
+
+    <h2 class="text-center">{{ awayStandings.City }} {{ awayStandings.Name }} Data</h2>
+    <table class="panel-box" style="padding: 20px; ">
+      <tr>
+        <th> W-L</th>
+        <th> Away W-L</th>
+        <th> Runs scored /game</th>
+        <th> Runs against /game</th>
+      </tr>
+      <tr>
+        <td> {{ awayStandings.Wins }} - {{ awayStandings.Losses }}  </td>
+        <td> {{ awayStandings.AwayWins }} - {{ awayStandings.AwayLosses }}  </td>
+        <td> {{ awayStandings.RunsScored / playedGamesAway | number }}  </td>
+        <td> {{ awayStandings.RunsAgainst / playedGamesAway | number }} </td>
+      </tr>
+    </table>
+
+    <h2 class="text-center">{{ homeStandings.City }} {{ homeStandings.Name }} Data</h2>
+    <table class="panel-box" style="padding: 20px; ">
+      <tr>
+        <th> W-L</th>
+        <th> Home W-L</th>
+        <th> Runs scored /game</th>
+        <th> Runs against /game</th>
+      </tr>
+      <tr>
+        <td> {{ homeStandings.Wins }} - {{ homeStandings.Losses }}  </td>
+        <td> {{ homeStandings.HomeWins }} - {{ homeStandings.HomeLosses }}  </td>
+        <td> {{ homeStandings.RunsScored / playedGamesHome | number }}  </td>
+        <td> {{ homeStandings.RunsAgainst / playedGamesHome | number }} </td>
+      </tr>
+    </table>
+
+
+    <div>
+
+    </div>
+  </div>
 
 </div>
+
 
