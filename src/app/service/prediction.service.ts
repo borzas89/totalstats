@@ -9,7 +9,7 @@ import { NflPrediction } from "../model/nflprediction";
 import { MlbResult } from "../model/mlbresult";
 import { Overalls } from "../model/overalls";
 
-let API_NBA_URL = "https://totalnba.herokuapp.com/api/prediction/day/";
+let API_NBA_URL = "https://totalnba-64d9e912c803.herokuapp.com/api/prediction/day/";
 
 @Injectable({
   providedIn: "root",
@@ -51,13 +51,7 @@ export class PredictionService {
   }
 
   public getFullNbaData(dayString: String): Observable<any> {
-    return this.http
-      .get<Prediction[]>("./assets/json/nba-predictions_2024.json")
-      .pipe(
-        map((data) =>
-          data.filter((prediction) => prediction.matchString === dayString)
-        )
-      );
+    return this.findNBAPredictionsByDay(dayString.toString());
   }
 
   public getFullMLBData(dayString: String): Observable<any> {

@@ -8,7 +8,8 @@ import {PredictionService} from '../../service/prediction.service';
 import { Prediction } from '../../model/prediction';
 import {Overalls} from '../../model/overalls';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
-import {ElementRef, ViewChild} from '@angular/core';
+import {ViewChild} from '@angular/core';
+import {MatSelect} from '@angular/material/select';
 import {DatePipe} from '@angular/common';
 import {formatDate} from '@angular/common';
 import {MatTableDataSource} from "@angular/material/table";
@@ -29,11 +30,24 @@ export class NbaPredictionsComponent implements OnInit, OnDestroy {
   items: Array<Prediction> | undefined;
   overalls: Array<Overalls> | undefined;
   myDate = new Date();
-  currentDay = formatDate(this.myDate, 'dd-MM-yyyy', 'en-US');
+  currentDay = '02-10-2025'; // NBA preseason start date
 
-  @ViewChild('days') days!: ElementRef;
+  // Generate date options dynamically for NBA season
+  availableDates: string[] = [];
+
+  private generateNBADates(): void {
+    const startDate = new Date(2025, 9, 2); // October 2, 2025 (month is 0-indexed)
+    const endDate = new Date(2026, 3, 15); // April 15, 2026
+
+    for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+      const dateString = d.toLocaleDateString('en-GB'); // DD/MM/YYYY format
+      this.availableDates.push(dateString.replace(/\//g, '-'));
+    }
+  }
+
   selectedDay = this.currentDay;
 
+  @ViewChild('days') days!: MatSelect;
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
 
   displayedColumns: string[] = [
@@ -74,7 +88,10 @@ export class NbaPredictionsComponent implements OnInit, OnDestroy {
   dataSource: any = MatTableDataSource<Overalls>;
 
   ngOnInit() {
-  this.predictionService.getNbaOveralls().subscribe((overalls) => {
+    // Generate available NBA dates
+    this.generateNBADates();
+
+    this.predictionService.getNbaOveralls().subscribe((overalls) => {
           this.dataSource = new MatTableDataSource(overalls);
       });
      this.dataSource = new MatTableDataSource(this.overalls);
@@ -90,10 +107,7 @@ export class NbaPredictionsComponent implements OnInit, OnDestroy {
     this.dataSource.filter = filterValue.trim().toUpperCase();
   }
 
-  onSelected(): void {
-    this.selectedDay = this.days.nativeElement.value;
-    this.getPredictions(this.selectedDay)
-  }
+  // onSelected method removed - using quickSelectDate instead
 
   constructor(private predictionService: PredictionService) {
     this.getPredictions(this.currentDay)
@@ -103,6 +117,34 @@ export class NbaPredictionsComponent implements OnInit, OnDestroy {
     this.predictionService.getFullNbaData(day).subscribe(data => {
       this.items = data
     });
+  }
+
+  // Get quick access dates (preseason and regular season key dates)
+  getQuickDates(): string[] {
+    return [
+      // Preseason dates (Oct 2-18, skip Oct 3)
+      '02-10-2025', '04-10-2025', '05-10-2025', '06-10-2025', '07-10-2025', '08-10-2025',
+      '09-10-2025', '10-10-2025', '11-10-2025', '12-10-2025', '13-10-2025', '14-10-2025',
+      '15-10-2025', '16-10-2025', '17-10-2025', '18-10-2025',
+      // Regular season key dates
+      '22-10-2025', // Opening night
+      '23-10-2025', '24-10-2025', '25-10-2025', '26-10-2025',
+      '01-11-2025', '15-11-2025', '25-12-2025', '01-01-2026'
+    ];
+  }
+
+  // Quick select date
+  quickSelectDate(date: string): void {
+    this.selectedDay = date;
+    this.getPredictions(date);
+  }
+
+  // Format date label for buttons
+  formatDateLabel(date: string): string {
+    const [day, month, year] = date.split('-');
+    const dateObj = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+    const options: Intl.DateTimeFormatOptions = { month: 'short', day: 'numeric' };
+    return dateObj.toLocaleDateString('en-US', options);
   }
 
   dataSubscription: Subscription | undefined;

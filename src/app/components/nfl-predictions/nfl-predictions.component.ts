@@ -26,10 +26,10 @@ interface Week {
 })
 export class NflPredictionsComponent {
  items: Array<NflPrediction> | undefined;
-  currentWeek = "2";
+  currentWeek = "6";
 
   @ViewChild('days') days!: ElementRef;
-  selectedDay = "2";
+  selectedDay = "6";
 
   onSelected(): void {
     this.selectedDay = this.days.nativeElement.value;
