@@ -1,0 +1,22 @@
+::ng-deep .hero-header.hero-bg {
+  height: auto !important;
+  max-height: none !important;
+  min-height: 280px;
+  padding: 50px 0 40px;
+}
+
+::ng-deep .hero-header.hero-bg .container,
+::ng-deep .hero-header.hero-bg .row {
+  height: auto !important;
+}
+
+::ng-deep .hero-header.hero-bg .container .col-lg-12.no-margin h1 {
+  color: #fff !important;
+}
+
+@media (max-width: 767px) {
+  ::ng-deep .hero-header.hero-bg {
+    min-height: 0;
+    padding: 36px 0 32px;
+  }
+}

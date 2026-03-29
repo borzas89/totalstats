@@ -1,4 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1d1d2e;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #01d099;
+  display: inline-block;
+  margin-bottom: 24px;
+  font-family: sans-serif;
+}
 @charset "UTF-8";
 /*!
  * Bootstrap v4.0.0-beta (https://getbootstrap.com)
@@ -15768,13 +15779,7 @@ iframe.big-video {
 }
 /* line 669, ../sass/main.scss */
 .hero-header.hero-bg:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  display: none;
 }
 /* line 678, ../sass/main.scss */
 .hero-header.hero-bg .container,

@@ -1,82 +1,144 @@
 <div class="container padding-top">
-<h3 class="header-2 padding-mini">MLB predictions</h3>
-<div class="col">
-  <select #days (change)="onSelected()">
-    <option default>{{ currentDay }}</option>
-    <option>2025-09-06</option>
+  <div class="d-flex justify-content-between align-items-baseline mb-1">
+    <h3 class="page-title mb-0">MLB Predictions</h3>
+    <a routerLink="/mlb-results" class="text-muted small">Show previous results →</a>
+  </div>
 
-  </select>
-  <a class="nav-link" href="/mlb-results">Previous MLB results - click here</a>
+  <!-- Date selector -->
+  <div class="padding-mini" style="margin-bottom: 15px;">
+    <button
+      *ngFor="let date of getQuickDates()"
+      class="btn btn-outline-primary btn-sm"
+      style="margin-right: 6px; margin-bottom: 6px;"
+      (click)="quickSelectDate(date)"
+      [class.active]="selectedDay === date">
+      {{ formatDateLabel(date) }}
+    </button>
+  </div>
+  <p style="color: #666; margin-bottom: 0;">
+    <strong>Selected:</strong> {{ selectedDay }}
+  </p>
 </div>
-<div class="content align-content-center" style="margin:20px">
-  <div class="card-deck">
-    <div class="card-deck pt-5 pb-5" >
-      <div class="col col-md-6 col-lg-4" style="padding:10px" *ngFor="let prediction of items ">
-        <div class="card"style="padding-bottom: 10px">
-          <div class="card-body">
-            <div class="col align-center" style="padding: 20px; max-width: 600px">
-                     <span class="float-left">
-                     <img [src]="'assets/mlb/'+prediction.awayTeamAlias+'.png'" width="50" height="50">
-                     </span>
-              <span class="float-right">
-                     <img [src]="'assets/mlb/'+prediction.homeTeamAlias+'.png'" width="50" height="50">
-                     </span>
-            </div>
-            <div class="col">
-              <div class="col-md-12">
-                <h3 class="text-center">{{ prediction.awayTeamAlias }} vs. {{ prediction.homeTeamAlias }}</h3>
-                <table class="panel-box" style="padding: 20px; max-width: 500px">
-                  <tr>
-                    <th>Away score</th>
-                    <th>Home Score</th>
-                    <th>Total</th>
-                  </tr>
-                  <tr>
-                    <td>{{ prediction.predictedAwayScore }}</td>
-                    <td>{{ prediction.predictedHomeScore }}</td>
-                    <td>{{ prediction.predictedTotal }}</td>
-                  </tr>
-                </table>
-              </div>
-              <div >
-                <h4 class="text-center">Probable pitchers</h4>
-              </div>
-              <table class="panel-box" style="padding: 20px; max-width: 500px">
-                <tr>
-                  <th> {{ prediction.awayPitcher }} (ERA) </th>
-                  <th> {{ prediction.homePitcher }} (ERA) </th>
-                </tr>
-                <tr>
-                  <td>{{ prediction.awayPitcherERA }}</td>
-                  <td>{{ prediction.homePitcherERA }}</td>
-                </tr>
-              </table>
-            </div>
-            <a [routerLink]="['../mlb-details/',prediction.commonMatchId]" class="row justify-content-end pr-4">More info</a>
+
+<!-- Loading -->
+<div class="container" *ngIf="loading" style="margin-top: 20px;">
+  <p class="text-muted">Loading predictions...</p>
+</div>
+
+<!-- No games -->
+<div class="container" *ngIf="!loading && items.length === 0" style="margin-top: 20px;">
+  <p class="text-muted">No predictions available for {{ selectedDay }}.</p>
+</div>
+
+<!-- Prediction cards -->
+<div class="container-fluid" style="margin: 20px 0;" *ngIf="!loading && items.length > 0">
+  <div class="row" [class.justify-content-center]="items.length === 1">
+    <div
+      class="col-12 col-md-6 col-lg-4"
+      [class.col-lg-6]="items.length === 1"
+      style="margin-bottom: 20px;"
+      *ngFor="let p of items">
+      <div class="card h-100">
+        <div class="card-body">
+
+          <!-- Team logos -->
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <img [src]="'assets/mlb/' + p.awayTeam.abbreviation + '.png'"
+                 width="50" height="50"
+                 [alt]="p.awayTeam.abbreviation"
+                 class="team-logo"
+                 (error)="$any($event.target).style.display='none'">
+            <small class="text-muted">{{ p.venueName }}</small>
+            <img [src]="'assets/mlb/' + p.homeTeam.abbreviation + '.png'"
+                 width="50" height="50"
+                 [alt]="p.homeTeam.abbreviation"
+                 class="team-logo"
+                 (error)="$any($event.target).style.display='none'">
           </div>
+
+          <!-- Matchup header -->
+          <h6 class="text-center mb-3">
+            {{ p.awayTeam.abbreviation }} <span class="text-muted">@</span> {{ p.homeTeam.abbreviation }}
+          </h6>
+
+          <!-- Score projection -->
+          <div class="table-responsive mb-2">
+            <table class="table table-sm table-bordered text-center mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Away</th>
+                  <th>Total</th>
+                  <th>Home</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>{{ p.awayRunsProjection }}</strong></td>
+                  <td><strong>{{ p.totalRunsProjection }}</strong></td>
+                  <td><strong>{{ p.homeRunsProjection }}</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pitchers -->
+          <div class="table-responsive mb-2">
+            <table class="table table-sm text-center mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Away SP</th>
+                  <th>Home SP</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span *ngIf="p.awayPitcher; else tbd">
+                      {{ p.awayPitcher.fullName }}<br>
+                      <small class="text-muted">ERA: {{ p.awayPitcher.eraUsed | number:'1.2-2' }}</small>
+                    </span>
+                    <ng-template #tbd><small class="text-muted">TBD</small></ng-template>
+                  </td>
+                  <td>
+                    <span *ngIf="p.homePitcher; else tbd2">
+                      {{ p.homePitcher.fullName }}<br>
+                      <small class="text-muted">ERA: {{ p.homePitcher.eraUsed | number:'1.2-2' }}</small>
+                    </span>
+                    <ng-template #tbd2><small class="text-muted">TBD</small></ng-template>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Picks -->
+          <div class="picks-section">
+            <div class="pick-row">
+              <span class="pick-label">Moneyline</span>
+              <span class="pick-value">{{ p.moneylinePlay }}</span>
+            </div>
+            <div class="pick-row">
+              <span class="pick-label">Run Line</span>
+              <span class="pick-value">{{ p.runlinePlay }}</span>
+            </div>
+            <div class="pick-row" *ngIf="p.totalPlay">
+              <span class="pick-label">Total</span>
+              <span class="pick-value" [class.over]="p.totalPlay === 'OVER'" [class.under]="p.totalPlay === 'UNDER'">
+                {{ p.totalPlay }}
+              </span>
+            </div>
+          </div>
+
+          <!-- Park factor + detail link -->
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <small class="text-muted">Park factor: {{ p.parkFactor | number:'1.2-2' }}</small>
+            <a [routerLink]="['/mlb-details', selectedDay, p.gamePk]" class="btn btn-sm btn-outline-secondary">
+              Details
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
 </div>
-</div>
-
-<div class="container padding">
-  <h3 class="header-2 padding-mini">MLB Standings table</h3>
-  <p> </p>
-</div>
-<div class="container padding">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container
-      *ngFor="let column of columns"
-      [matColumnDef]="column.columnDef"
-    >
-      <th mat-header-cell *matHeaderCellDef >{{column.header}}</th>
-      <td mat-cell *matCellDef="let row">{{column.cell(row)}}</td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-</div>
-
-

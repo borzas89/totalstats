@@ -1,109 +1,67 @@
-import {Component, TemplateRef, OnDestroy, OnInit} from '@angular/core';
-import { ElementRef, ViewChild } from "@angular/core";
-import { Observable, Subscription } from "rxjs";
-import { combineAll, map, switchMap } from "rxjs/operators";
-import { PredictionService } from "../../service/prediction.service";
-import { StandingsService } from "../../service/standings.service";
-import { MlbPrediction } from "../../model/mlbprediction";
-import { MatTableDataSource } from "@angular/material/table";
-import { Overalls } from "../../model/overalls";
-import { Standings } from "../../model/standings";
-import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { formatDate } from '@angular/common';
-import { MatPaginator } from "@angular/material/paginator";
-
-interface Day {
-  value: string;
-  viewValue: string;
-}
+import { PredictionService } from '../../service/prediction.service';
+import { MlbPrediction } from '../../model/mlbprediction';
 
 @Component({
-  selector: "app-mlb-predictions",
-  templateUrl: "./mlb-predictions.component.html",
-  styleUrls: ["./mlb-predictions.component.css"],
+  selector: 'app-mlb-predictions',
+  templateUrl: './mlb-predictions.component.html',
+  styleUrls: ['./mlb-predictions.component.css']
 })
 export class MlbPredictionsComponent implements OnInit {
-  items: Array<MlbPrediction> | undefined;
-  standings: Array<Standings> | undefined;
 
-  myDate = new Date();
-  currentDay = formatDate(this.myDate, 'yyyy-MM-dd', 'en-US');
-   @ViewChild('days') days!: ElementRef;
-   selectedDay = this.currentDay;
+  items: MlbPrediction[] = [];
+  loading = false;
 
-  displayedColumns: string[] = [
-    "Name",
-    "Wins",
-    "Losses",
-    "RunsScored",
-    "RunsAgainst",
-  ];
+  private today = new Date();
+  selectedDay = formatDate(this.today, 'yyyy-MM-dd', 'en-US');
 
-  columns = [
-    {
-      columnDef: "Name",
-      header: "Name",
-      cell: (element: Standings) => `${element.Name}`,
-    },
-    {
-      columnDef: "Wins",
-      header: "Wins",
-      cell: (element: Standings) => `${element.Wins}`,
-    },
-    {
-      columnDef: "Losses",
-      header: "Losses",
-      cell: (element: Standings) => `${element.Losses}`,
-    },
-    {
-      columnDef: "RunsScored",
-      header: "Runs scored",
-      cell: (element: Standings) => `${element.RunsScored}`,
-    },
-    {
-      columnDef: "RunsAgainst",
-      header: "Runs against",
-      cell: (element: Standings) => `${element.RunsAgainst}`,
-    },
-  ];
+  constructor(private predictionService: PredictionService) {}
 
-  dataSource: any = MatTableDataSource<Standings>;
-    ngOnInit() {
-    this.standingsService.getAllMLBStandings().subscribe((overalls) => {
-            this.dataSource = new MatTableDataSource(overalls);
-        });
-       this.dataSource = new MatTableDataSource(this.standings);
-   }
-
-  onSelected(): void {
-     this.selectedDay = this.days.nativeElement.value;
-     this.getPredictions(this.selectedDay);
+  ngOnInit(): void {
+    this.getPredictions(this.selectedDay);
   }
 
-  constructor(
-    private predictionService: PredictionService,
-    private standingsService: StandingsService
-  ) {
-    this.getPredictions(this.currentDay)
-    this.getAllStandings();
-  }
-
-  getPredictions(day: string) {
-    this.predictionService.getFullMLBData(day).subscribe((data) => {
-      console.log(data);
-      this.items = data;
+  getPredictions(date: string): void {
+    this.loading = true;
+    this.items = [];
+    this.predictionService.getMlbPredictions(date).subscribe({
+      next: (data) => {
+        this.items = data;
+        this.loading = false;
+      },
+      error: () => {
+        this.loading = false;
+      }
     });
   }
 
-  getStandings(key: string) {
-    this.standingsService.getMLBStandings(key).subscribe((data) => {
-      console.log(data);
-    });
+  quickSelectDate(date: string): void {
+    this.selectedDay = date;
+    this.getPredictions(date);
   }
-  getAllStandings() {
-    this.standingsService.getAllMLBStandings().subscribe((data) => {
-    this.standings = data;
-      console.log(data);
-    });
+
+  /** 7 days back + today + 1 day ahead (tomorrow) */
+  getQuickDates(): string[] {
+    const dates: string[] = [];
+    for (let i = -7; i <= 1; i++) {
+      const d = new Date(this.today);
+      d.setDate(this.today.getDate() + i);
+      dates.push(formatDate(d, 'yyyy-MM-dd', 'en-US'));
+    }
+    return dates;
+  }
+
+  formatDateLabel(date: string): string {
+    const d = new Date(date + 'T00:00:00');
+    const today = formatDate(this.today, 'yyyy-MM-dd', 'en-US');
+    const tomorrow = (() => {
+      const t = new Date(this.today);
+      t.setDate(t.getDate() + 1);
+      return formatDate(t, 'yyyy-MM-dd', 'en-US');
+    })();
+    if (date === today) return 'Today';
+    if (date === tomorrow) return 'Tomorrow';
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   }
 }

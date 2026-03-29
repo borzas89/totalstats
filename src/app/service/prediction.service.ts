@@ -4,12 +4,13 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { Prediction } from "../model/prediction";
 import { AcbPrediction } from "../model/acbprediction";
-import { MlbPrediction } from "../model/mlbprediction";
+import { MlbPrediction, MlbGameDetail, MlbResultSummary } from "../model/mlbprediction";
 import { NflPrediction } from "../model/nflprediction";
 import { MlbResult } from "../model/mlbresult";
 import { Overalls } from "../model/overalls";
 
 let API_NBA_URL = "https://totalnba-64d9e912c803.herokuapp.com/api/prediction/day/";
+const API_MLB_URL = "https://totalmlb-f910f23ed916.herokuapp.com/api/predictions";
 
 @Injectable({
   providedIn: "root",
@@ -56,7 +57,7 @@ export class PredictionService {
 
   public getFullMLBData(dayString: String): Observable<any> {
     return this.http
-      .get<MlbPrediction[]>("./assets/json/mlb-predictions_2024.json")
+      .get<any[]>("./assets/json/mlb-predictions_2024.json")
       .pipe(
         map((data) =>
           data.filter((prediction) => prediction.date === dayString)
@@ -66,7 +67,7 @@ export class PredictionService {
 
     public getMLBPredictionById(idString: String): Observable<any> {
       return this.http
-        .get<MlbPrediction[]>("./assets/json/mlb-predictions_2024.json")
+        .get<any[]>("./assets/json/mlb-predictions_2024.json")
         .pipe(
           map((data) =>
             data.filter((prediction) => prediction.commonMatchId === idString)
@@ -108,12 +109,35 @@ export class PredictionService {
 
   public getFullAcbData(dayString: String): Observable<any> {
     return this.http
-      .get<AcbPrediction[]>("./assets/json/acb-predictions_2024.json")
+      .get<AcbPrediction[]>("./assets/json/acb-predictions_2026.json")
       .pipe(
         map((data) =>
           data.filter((prediction) => prediction.matchString === dayString)
         )
       );
+  }
+
+  public getMlbPredictions(date: string): Observable<MlbPrediction[]> {
+    return this.http.get<MlbPrediction[]>(`${API_MLB_URL}?date=${date}`);
+  }
+
+  public getMlbGameDetail(gamePk: number): Observable<MlbGameDetail> {
+    return this.http.get<MlbGameDetail>(`${API_MLB_URL}/${gamePk}`);
+  }
+
+  /** Fetches real scores from MLB API for all games on a date and returns results. */
+  public getMlbResultFetch(date: string): Observable<MlbResultSummary[]> {
+    return this.http.get<MlbResultSummary[]>(
+      `https://totalmlb-f910f23ed916.herokuapp.com/api/results/fetch?date=${date}`
+    );
+  }
+
+  public getMlbAllResults(): Observable<any[]> {
+    return this.http.get<any[]>('https://totalmlb-f910f23ed916.herokuapp.com/api/results');
+  }
+
+  public getMlbStats(): Observable<any> {
+    return this.http.get<any>('https://totalmlb-f910f23ed916.herokuapp.com/api/stats');
   }
 
   public getMLBResults(): Observable<any> {

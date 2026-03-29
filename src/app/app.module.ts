@@ -13,6 +13,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientJsonpModule, HttpClientModule} from "@angular/common/http";
 import { PredictionCardComponent } from './components/prediction-card/prediction-card.component';
 import { FooterComponent } from './core/footer/footer.component';
@@ -25,6 +27,7 @@ import { MlbResultsComponent } from './components/mlb-results/mlb-results.compon
 import { MlbDetailsComponent } from './components/mlb-details/mlb-details.component';
 import { WnbaPredictionsComponent } from './components/wnba-predictions/wnba-predictions.component';
 import { NflPredictionsComponent } from './components/nfl-predictions/nfl-predictions.component';
+import { DeepLinkTestComponent } from './components/deep-link-test/deep-link-test.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import { NflPredictionsComponent } from './components/nfl-predictions/nfl-predic
     MlbResultsComponent,
     MlbDetailsComponent,
     WnbaPredictionsComponent,
-    NflPredictionsComponent
+    NflPredictionsComponent,
+    DeepLinkTestComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +60,8 @@ import { NflPredictionsComponent } from './components/nfl-predictions/nfl-predic
     MatOptionModule,
     FormsModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 
   ],
   providers: [],

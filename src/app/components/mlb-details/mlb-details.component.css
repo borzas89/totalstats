@@ -1,0 +1,81 @@
+.section-card {
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.section-card-body {
+  padding: 16px;
+}
+
+.section-title {
+  background: #0d1b2e;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 10px 16px;
+  border-bottom: 3px solid #e63946;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.team-header .team-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: 6px;
+}
+
+.at-sign {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #adb5bd;
+}
+
+.venue-name {
+  font-size: 0.8rem;
+}
+
+.actual-score {
+  color: #28a745;
+  font-size: 1.1rem;
+}
+
+.pitcher-card {
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.pitcher-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.pitcher-stat {
+  font-size: 0.82rem;
+}
+
+.pitcher-source {
+  font-size: 0.75rem;
+  margin-top: 4px;
+}
+
+.park-factor-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #495057;
+}
+
+.hitter-friendly { color: #dc3545; }
+.pitcher-friendly { color: #28a745; }
+
+.table th { font-size: 0.78rem; padding: 6px 4px; }
+.table td { font-size: 0.85rem; padding: 6px 4px; }
+
+@media (max-width: 576px) {
+  .team-header img { width: 48px !important; height: 48px !important; }
+  .team-header .team-name { font-size: 0.8rem; }
+}

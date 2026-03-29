@@ -1,72 +1,194 @@
-<div class="container padding-top" style="min-height:450px">
-  <h3 class="header-2 padding-mini">MLB Details</h3>
-<p>MLB Details page under constructions! More content coming soon...</p>
+<div class="container padding-top" style="min-height: 500px;">
 
-  <div >
-    <h2 class="text-center">{{ prediction.awayTeamAlias }} vs. {{ prediction.homeTeamAlias }}</h2>
+  <a [routerLink]="['/mlb-predictions']" class="btn btn-sm btn-outline-secondary mb-3">← Back to predictions</a>
 
-    <table class="panel-box" style="padding: 20px; ">
-      <tr>
-        <th>Away score</th>
-        <th>Home Score</th>
-        <th>Total</th>
-      </tr>
-      <tr>
-        <td>{{ prediction.predictedAwayScore }}</td>
-        <td>{{ prediction.predictedHomeScore }}</td>
-        <td>{{ prediction.predictedTotal }}</td>
-      </tr>
-    </table>
-    <table class="panel-box" style="padding: 20px; ">
-      <tr>
-        <th> {{ prediction.awayPitcher }} (ERA) </th>
-        <th> {{ prediction.homePitcher }} (ERA) </th>
-      </tr>
-      <tr>
-        <td>{{ prediction.awayPitcherERA }}</td>
-        <td>{{ prediction.homePitcherERA }}</td>
-      </tr>
-    </table>
+  <div *ngIf="loading" class="text-muted">Loading...</div>
 
-
-    <h2 class="text-center">{{ awayStandings.City }} {{ awayStandings.Name }} Data</h2>
-    <table class="panel-box" style="padding: 20px; ">
-      <tr>
-        <th> W-L</th>
-        <th> Away W-L</th>
-        <th> Runs scored /game</th>
-        <th> Runs against /game</th>
-      </tr>
-      <tr>
-        <td> {{ awayStandings.Wins }} - {{ awayStandings.Losses }}  </td>
-        <td> {{ awayStandings.AwayWins }} - {{ awayStandings.AwayLosses }}  </td>
-        <td> {{ awayStandings.RunsScored / playedGamesAway | number }}  </td>
-        <td> {{ awayStandings.RunsAgainst / playedGamesAway | number }} </td>
-      </tr>
-    </table>
-
-    <h2 class="text-center">{{ homeStandings.City }} {{ homeStandings.Name }} Data</h2>
-    <table class="panel-box" style="padding: 20px; ">
-      <tr>
-        <th> W-L</th>
-        <th> Home W-L</th>
-        <th> Runs scored /game</th>
-        <th> Runs against /game</th>
-      </tr>
-      <tr>
-        <td> {{ homeStandings.Wins }} - {{ homeStandings.Losses }}  </td>
-        <td> {{ homeStandings.HomeWins }} - {{ homeStandings.HomeLosses }}  </td>
-        <td> {{ homeStandings.RunsScored / playedGamesHome | number }}  </td>
-        <td> {{ homeStandings.RunsAgainst / playedGamesHome | number }} </td>
-      </tr>
-    </table>
-
-
-    <div>
-
-    </div>
+  <div *ngIf="error && !loading" class="alert alert-warning">
+    Game not found for {{ date }}.
   </div>
 
+  <ng-container *ngIf="prediction && !loading">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div class="team-header text-center">
+        <img [src]="'assets/mlb/' + prediction.awayTeam.abbreviation + '.png'"
+             width="64" height="64" [alt]="prediction.awayTeam.abbreviation"
+             (error)="$any($event.target).style.display='none'">
+        <div class="team-name">{{ prediction.awayTeam.name }}</div>
+        <small class="text-muted">Away</small>
+      </div>
+
+      <div class="text-center">
+        <div class="text-muted small mb-1">{{ prediction.venueName }}</div>
+        <div class="at-sign">@</div>
+        <div class="text-muted small mt-1">{{ date }}</div>
+      </div>
+
+      <div class="team-header text-center">
+        <img [src]="'assets/mlb/' + prediction.homeTeam.abbreviation + '.png'"
+             width="64" height="64" [alt]="prediction.homeTeam.abbreviation"
+             (error)="$any($event.target).style.display='none'">
+        <div class="team-name">{{ prediction.homeTeam.name }}</div>
+        <small class="text-muted">Home</small>
+      </div>
+    </div>
+
+    <!-- Score -->
+    <div class="section-card mb-3">
+      <h6 class="section-title">Score</h6>
+      <div class="section-card-body">
+      <table class="table table-sm text-center mb-0">
+        <thead class="table-light">
+          <tr>
+            <th></th>
+            <th>{{ prediction.awayTeam.abbreviation }}</th>
+            <th>Total</th>
+            <th>{{ prediction.homeTeam.abbreviation }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-muted small">Projected</td>
+            <td><strong>{{ prediction.awayRunsProjection }}</strong></td>
+            <td><strong>{{ prediction.totalRunsProjection }}</strong></td>
+            <td><strong>{{ prediction.homeRunsProjection }}</strong></td>
+          </tr>
+          <tr *ngIf="result && result.awayActualRuns != null">
+            <td class="text-muted small">Actual</td>
+            <td class="actual-score"><strong>{{ result.awayActualRuns }}</strong></td>
+            <td class="actual-score"><strong>{{ result.totalActual }}</strong></td>
+            <td class="actual-score"><strong>{{ result.homeActualRuns }}</strong></td>
+          </tr>
+          <tr *ngIf="!result || result.awayActualRuns == null">
+            <td class="text-muted small" colspan="4"><em>Final score not available yet</em></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <!-- Picks -->
+    <div class="section-card mb-3">
+      <h6 class="section-title">Picks</h6>
+      <div class="section-card-body">
+      <table class="table table-sm mb-0">
+        <thead class="table-light">
+          <tr><th>Type</th><th>Pick</th><th>Result</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-muted small">Moneyline</td>
+            <td>{{ prediction.moneylinePlay }}</td>
+            <td>{{ resultIcon(result?.moneylineCorrect) }}</td>
+          </tr>
+          <tr>
+            <td class="text-muted small">Run Line</td>
+            <td>{{ prediction.runlinePlay }}</td>
+            <td>{{ resultIcon(result?.runlineCorrect) }}</td>
+          </tr>
+          <tr>
+            <td class="text-muted small">Total</td>
+            <td>
+              <span *ngIf="prediction.totalPlay">{{ prediction.totalPlay }}
+                <small class="text-muted" *ngIf="result?.sportsbookTotal">(line: {{ result!.sportsbookTotal }})</small>
+              </span>
+              <span *ngIf="!prediction.totalPlay" class="text-muted">—</span>
+            </td>
+            <td>{{ resultIcon(result?.totalCorrect) }}</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <!-- Pitchers -->
+    <div class="section-card mb-3">
+      <h6 class="section-title">Probable Pitchers</h6>
+      <div class="section-card-body">
+      <div class="row">
+        <div class="col-6">
+          <ng-container *ngIf="prediction.awayPitcher; else noAway">
+            <div class="pitcher-card">
+              <div class="pitcher-name">{{ prediction.awayPitcher.fullName }}</div>
+              <div class="pitcher-stat">ERA: <strong>{{ prediction.awayPitcher.era | number:'1.2-2' }}</strong></div>
+              <div class="pitcher-stat" *ngIf="prediction.awayPitcher.fip != null">
+                FIP: <strong>{{ prediction.awayPitcher.fip | number:'1.2-2' }}</strong>
+              </div>
+              <div class="pitcher-stat">Used: <strong>{{ prediction.awayPitcher.eraUsed | number:'1.2-2' }}</strong></div>
+              <div class="pitcher-source text-muted">{{ prediction.awayPitcher.eraSource }}</div>
+            </div>
+          </ng-container>
+          <ng-template #noAway><span class="text-muted">TBD</span></ng-template>
+        </div>
+        <div class="col-6">
+          <ng-container *ngIf="prediction.homePitcher; else noHome">
+            <div class="pitcher-card">
+              <div class="pitcher-name">{{ prediction.homePitcher.fullName }}</div>
+              <div class="pitcher-stat">ERA: <strong>{{ prediction.homePitcher.era | number:'1.2-2' }}</strong></div>
+              <div class="pitcher-stat" *ngIf="prediction.homePitcher.fip != null">
+                FIP: <strong>{{ prediction.homePitcher.fip | number:'1.2-2' }}</strong>
+              </div>
+              <div class="pitcher-stat">Used: <strong>{{ prediction.homePitcher.eraUsed | number:'1.2-2' }}</strong></div>
+              <div class="pitcher-source text-muted">{{ prediction.homePitcher.eraSource }}</div>
+            </div>
+          </ng-container>
+          <ng-template #noHome><span class="text-muted">TBD</span></ng-template>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- Team stats -->
+    <div class="section-card mb-3">
+      <h6 class="section-title">Team Stats (Runs/Game)</h6>
+      <div class="section-card-body">
+      <table class="table table-sm text-center mb-0">
+        <thead class="table-light">
+          <tr><th></th><th>Season</th><th>Last 3</th><th>Home</th><th>Away</th><th>Bullpen ERA</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-start"><strong>{{ prediction.awayTeam.abbreviation }}</strong></td>
+            <td>{{ prediction.awayTeam.runsPerGameSeason | number:'1.2-2' }}</td>
+            <td>{{ prediction.awayTeam.runsPerGameLast3 | number:'1.2-2' }}</td>
+            <td>{{ prediction.awayTeam.runsPerGameHome | number:'1.2-2' }}</td>
+            <td>{{ prediction.awayTeam.runsPerGameAway | number:'1.2-2' }}</td>
+            <td>{{ prediction.awayTeam.bullpenEra | number:'1.2-2' }}</td>
+          </tr>
+          <tr>
+            <td class="text-start"><strong>{{ prediction.homeTeam.abbreviation }}</strong></td>
+            <td>{{ prediction.homeTeam.runsPerGameSeason | number:'1.2-2' }}</td>
+            <td>{{ prediction.homeTeam.runsPerGameLast3 | number:'1.2-2' }}</td>
+            <td>{{ prediction.homeTeam.runsPerGameHome | number:'1.2-2' }}</td>
+            <td>{{ prediction.homeTeam.runsPerGameAway | number:'1.2-2' }}</td>
+            <td>{{ prediction.homeTeam.bullpenEra | number:'1.2-2' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <!-- Park factor -->
+    <div class="section-card mb-4">
+      <h6 class="section-title">Park Factor</h6>
+      <div class="section-card-body">
+      <div class="d-flex align-items-center gap-3">
+        <div class="park-factor-value"
+             [class.hitter-friendly]="prediction.parkFactor > 1.02"
+             [class.pitcher-friendly]="prediction.parkFactor < 0.98">
+          {{ prediction.parkFactor | number:'1.2-2' }}
+        </div>
+        <small class="text-muted">
+          <span *ngIf="prediction.parkFactor > 1.02">Hitter-friendly</span>
+          <span *ngIf="prediction.parkFactor < 0.98">Pitcher-friendly</span>
+          <span *ngIf="prediction.parkFactor >= 0.98 && prediction.parkFactor <= 1.02">Neutral</span>
+          &nbsp;— {{ prediction.venueName }}
+        </small>
+      </div>
+      </div>
+    </div>
+
+  </ng-container>
 </div>
-
-

@@ -8,6 +8,7 @@ import { MlbPredictionsComponent } from './components/mlb-predictions/mlb-predic
 import { MlbResultsComponent } from './components/mlb-results/mlb-results.component';
 import { MlbDetailsComponent } from './components/mlb-details/mlb-details.component';
 import { JumbotronComponent } from './core/jumbotron/jumbotron.component';
+import { DeepLinkTestComponent } from './components/deep-link-test/deep-link-test.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'acb-predictions', component: AcbPredictionsComponent },
   { path: 'nfl-predictions', component: NflPredictionsComponent },
   { path: 'mlb-results', component: MlbResultsComponent },
-  { path: 'mlb-details/:id', component: MlbDetailsComponent }
+  { path: 'mlb-details/:date/:gamePk', component: MlbDetailsComponent },
+  { path: 'secret-deep-link-test', component: DeepLinkTestComponent }
 ];
 
 @NgModule({

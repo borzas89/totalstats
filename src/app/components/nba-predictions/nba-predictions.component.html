@@ -13,17 +13,9 @@
         {{ formatDateLabel(date) }}
       </button>
     </div>
-
-    <!-- Full date selector with green theme -->
-    <mat-form-field appearance="outline" style="margin-top: 10px;">
-      <mat-label>Or select any date</mat-label>
-      <mat-select #days [value]="selectedDay" (selectionChange)="quickSelectDate($event.value)">
-        <mat-option [value]="currentDay">{{ currentDay }} (Season Start)</mat-option>
-        <mat-option *ngFor="let date of availableDates.slice(0, 100)" [value]="date">
-          {{ date }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <p style="margin-top: 10px; color: #666;">
+      <strong>Selected: </strong>{{ selectedDay }}
+    </p>
   </div>
 </div>
 

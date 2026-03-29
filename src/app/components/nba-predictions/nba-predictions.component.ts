@@ -30,7 +30,7 @@ export class NbaPredictionsComponent implements OnInit, OnDestroy {
   items: Array<Prediction> | undefined;
   overalls: Array<Overalls> | undefined;
   myDate = new Date();
-  currentDay = '02-10-2025'; // NBA preseason start date
+  currentDay = '20-11-2025'; // Today's date
 
   // Generate date options dynamically for NBA season
   availableDates: string[] = [];
@@ -119,18 +119,39 @@ export class NbaPredictionsComponent implements OnInit, OnDestroy {
     });
   }
 
-  // Get quick access dates (preseason and regular season key dates)
+  // Get quick access dates (2 days before today to 1 week after today)
   getQuickDates(): string[] {
-    return [
-      // Preseason dates (Oct 2-18, skip Oct 3)
-      '02-10-2025', '04-10-2025', '05-10-2025', '06-10-2025', '07-10-2025', '08-10-2025',
-      '09-10-2025', '10-10-2025', '11-10-2025', '12-10-2025', '13-10-2025', '14-10-2025',
-      '15-10-2025', '16-10-2025', '17-10-2025', '18-10-2025',
-      // Regular season key dates
-      '22-10-2025', // Opening night
-      '23-10-2025', '24-10-2025', '25-10-2025', '26-10-2025',
-      '01-11-2025', '15-11-2025', '25-12-2025', '01-01-2026'
-    ];
+    const dates: string[] = [];
+    const today = new Date();
+
+    // Start from 2 days ago
+    const startDate = new Date(today);
+    startDate.setDate(today.getDate() - 2);
+
+    // End at today + 7 days
+    const endDate = new Date(today);
+    endDate.setDate(today.getDate() + 7);
+
+    // Generate all dates in the range
+    for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+      const day = String(d.getDate()).padStart(2, '0');
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const year = d.getFullYear();
+      dates.push(`${day}-${month}-${year}`);
+    }
+
+    return dates;
+  }
+
+  // Handle date picker change
+  onDateChange(event: any): void {
+    const selectedDate = new Date(event.value);
+    const day = String(selectedDate.getDate()).padStart(2, '0');
+    const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
+    const year = selectedDate.getFullYear();
+    const formattedDate = `${day}-${month}-${year}`;
+    this.selectedDay = formattedDate;
+    this.getPredictions(formattedDate);
   }
 
   // Quick select date
